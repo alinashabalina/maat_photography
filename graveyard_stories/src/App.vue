@@ -4,6 +4,10 @@ import { RouterView } from 'vue-router'
 
 <template>
   <header></header>
-
   <RouterView />
 </template>
+
+<style lang="scss">
+@import '@/main.scss';
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
+</style>
