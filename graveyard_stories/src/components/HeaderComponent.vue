@@ -2,7 +2,8 @@
 import { ref } from 'vue'
 import MenuButtonComponent from '@/components/MenuButtonComponent.vue'
 import ModalWindow from '@/components/ModalWindowComponent.vue'
-const menu = ref('about us')
+const menu = ref('menu')
+const about = ref('about us')
 const signup = ref('explore')
 const showModal = ref(false)
 </script>
@@ -10,7 +11,11 @@ const showModal = ref(false)
 <template>
   <div class="outer-wrapper">
     <div class="inner-wrapper">
-      <MenuButtonComponent :data="menu" class="menu-button" />
+      <div class="menu-btn">
+        <img src="@/assets/menu.png" class="menu-icon" />
+        menu
+      </div>
+      <MenuButtonComponent :data="about" class="menu-button" />
       <MenuButtonComponent :data="signup" id="show-modal" @click="showModal = true" />
       <Teleport to="body" />
       <ModalWindow :isShown="showModal" @close="showModal = false" />
@@ -18,7 +23,7 @@ const showModal = ref(false)
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .outer-wrapper {
   width: 100%;
   height: 100px;
@@ -35,5 +40,33 @@ const showModal = ref(false)
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.button-wrapper {
+  display: flex;
+  width: 150px;
+}
+
+.menu-icon {
+  width: 45px;
+  height: 45px;
+}
+
+.menu-btn {
+  height: 50px;
+  width: 130px;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-transform: uppercase;
+  font-size: 22px;
+  &:hover {
+    background-color: #b4b4b8;
+    transition: 1s;
+  }
 }
 </style>

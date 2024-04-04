@@ -8,7 +8,7 @@ import FooterComponent from '@/components/FooterComponent.vue'
   <div class="main-info-container">
     <img src="@/assets/DSCF0093.jpg" class="main-pic" />
   </div>
-  <div class="header-text">MAAT</div>
+  <div class="header-text">MA'AT</div>
   <FooterComponent class="footer" />
 </template>
 
