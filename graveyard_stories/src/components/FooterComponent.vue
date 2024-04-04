@@ -5,8 +5,8 @@
     <div class="inner-wrapper">
       <div class="socials-wrapper">
         <div class="socials-icons">
-          <img src="@/assets/telegram.png" class="tlgrm-icon" />
-          <img src="@/assets/insta.png" class="insta-icon" />
+          <img src="@/assets/telegram.png" class="tlgrm-icon socials" />
+          <img src="@/assets/insta.png" class="insta-icon socials" />
         </div>
         <div class="socials-wrapper__attribute">
           icons designed by
@@ -68,6 +68,12 @@ a {
 
   &:visited {
     color: #000;
+  }
+}
+
+.socials {
+  &:hover {
+    filter: drop-shadow(0px 0px 10px) invert(30%);
   }
 }
 </style>

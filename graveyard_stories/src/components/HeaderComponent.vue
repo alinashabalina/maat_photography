@@ -2,7 +2,6 @@
 import { ref } from 'vue'
 import MenuButtonComponent from '@/components/MenuButtonComponent.vue'
 import ModalWindow from '@/components/ModalWindowComponent.vue'
-const menu = ref('menu')
 const about = ref('about us')
 const signup = ref('explore')
 const showModal = ref(false)
@@ -64,6 +63,7 @@ const showModal = ref(false)
   align-items: center;
   text-transform: uppercase;
   font-size: 22px;
+  color: black;
   &:hover {
     background-color: #b4b4b8;
     transition: 1s;
