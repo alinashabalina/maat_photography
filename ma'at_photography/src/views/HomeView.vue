@@ -1,6 +1,9 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import HeaderComponent from '@/components/HeaderComponent.vue'
 import FooterComponent from '@/components/FooterComponent.vue'
+import ModalWindow from '@/components/ModalWindowComponent.vue'
+const showModal = ref(false)
 </script>
 
 <template>
@@ -14,7 +17,9 @@ import FooterComponent from '@/components/FooterComponent.vue'
       exploring the (under)world & concepts of life and death through photography
     </div>
   </div>
-  <button class="signup-button">Explore with us</button>
+  <button class="signup-button" @click="showModal = true">Explore with us</button>
+  <Teleport to="body" />
+  <ModalWindow :isShown="showModal" @close="showModal = false" header="header" />
   <FooterComponent class="footer" />
 </template>
 
@@ -69,10 +74,10 @@ import FooterComponent from '@/components/FooterComponent.vue'
   text-transform: uppercase;
   font-family: 'Cinzel', serif;
   border-radius: 10px;
+  transition: 1s;
 
   &:hover {
     box-shadow: 0 0 30px rgba(151, 151, 151);
-    transition: 1s;
     height: 80px;
     font-weight: 500;
   }

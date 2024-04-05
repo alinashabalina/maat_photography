@@ -5,6 +5,7 @@ import ModalWindow from '@/components/ModalWindowComponent.vue'
 const about = ref('about us')
 const signup = ref('about you')
 const showModal = ref(false)
+const header = ref('header')
 </script>
 
 <template>
@@ -15,9 +16,9 @@ const showModal = ref(false)
         menu
       </div>
       <MenuButtonComponent :data="about" class="menu-button" />
-      <MenuButtonComponent :data="signup" id="show-modal" @click="showModal = true" />
+      <MenuButtonComponent :data="signup" @click="showModal = true" />
       <Teleport to="body" />
-      <ModalWindow :isShown="showModal" @close="showModal = false" />
+      <ModalWindow :isShown="showModal" @close="showModal = false" header="header" />
     </div>
   </div>
 </template>
@@ -64,10 +65,10 @@ const showModal = ref(false)
   text-transform: uppercase;
   font-size: 22px;
   color: black;
+  transition: 1s;
   &:hover {
     background-color: #b4b4b8;
     box-shadow: 0 0 30px rgba(151, 151, 151);
-    transition: 1s;
     height: 60px;
   }
 }

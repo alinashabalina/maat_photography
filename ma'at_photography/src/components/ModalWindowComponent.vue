@@ -1,6 +1,7 @@
 <script setup lang="ts">
 defineProps<{
   isShown: Boolean
+  header: String
 }>()
 import CloseButtonComponent from '@/components/shared/CloseButtonComponent.vue'
 </script>
@@ -10,16 +11,11 @@ import CloseButtonComponent from '@/components/shared/CloseButtonComponent.vue'
     <div v-if="isShown" class="modal-screen">
       <div class="modal-container">
         <div class="modal-container__header">
-          <slot name="header">register or sign in</slot>
+          {{ header }}
         </div>
-        <div class="modal-container__body">
-          <slot name="body">blah blaf fields</slot>
-        </div>
+        <div class="modal-container__body">{<slot name="body">blah blaf fields</slot>}</div>
         <div class="modal-container__footer">
-          <slot name="footer"
-            >blah blah
-            <CloseButtonComponent class="modal-container__button" @click="$emit('close')" />
-          </slot>
+          <CloseButtonComponent class="modal-container__button" @click="$emit('close')" />
         </div>
       </div>
     </div>
