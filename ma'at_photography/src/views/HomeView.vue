@@ -8,11 +8,17 @@ import FooterComponent from '@/components/FooterComponent.vue'
   <div class="main-info-container">
     <img src="@/assets/DSCF0093.jpg" class="main-pic" />
   </div>
-  <div class="header-text">MAʽAT</div>
+  <div class="header-text">
+    <div class="header-text__header">MAʽAT</div>
+    <div class="header-text__info">
+      exploring the (under)world & concepts of life and death through photography
+    </div>
+  </div>
+  <button class="signup-button">Explore with us</button>
   <FooterComponent class="footer" />
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .main-info-container {
   margin-top: 1%;
   width: 1300px;
@@ -22,7 +28,7 @@ import FooterComponent from '@/components/FooterComponent.vue'
 }
 
 .main-pic {
-  filter: grayscale(100%);
+  filter: grayscale(150%);
   width: inherit;
   height: 700px;
 }
@@ -36,7 +42,39 @@ import FooterComponent from '@/components/FooterComponent.vue'
   color: white;
   font-family: 'Cinzel', serif;
   position: absolute;
-  top: 30%;
+  top: 20%;
   left: 45%;
+
+  &__info {
+    font-size: 40px;
+    width: 60%;
+    text-align: justify;
+  }
+
+  &__2ndline {
+    text-align: end;
+  }
+}
+
+.signup-button {
+  border: solid 2px white;
+  background-color: transparent;
+  width: 300px;
+  height: 70px;
+  position: absolute;
+  top: 70%;
+  left: 20%;
+  color: white;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-family: 'Cinzel', serif;
+  border-radius: 10px;
+
+  &:hover {
+    box-shadow: 0 0 30px rgba(151, 151, 151);
+    transition: 1s;
+    height: 80px;
+    font-weight: 500;
+  }
 }
 </style>

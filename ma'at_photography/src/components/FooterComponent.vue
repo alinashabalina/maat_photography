@@ -73,7 +73,7 @@ a {
 
 .socials {
   &:hover {
-    filter: drop-shadow(0px 0px 10px) invert(30%);
+    filter: drop-shadow(0px 0px 10px);
     transition: 0.5s;
   }
 }

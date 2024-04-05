@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import MenuButtonComponent from '@/components/MenuButtonComponent.vue'
 import ModalWindow from '@/components/ModalWindowComponent.vue'
 const about = ref('about us')
-const signup = ref('explore')
+const signup = ref('about you')
 const showModal = ref(false)
 </script>
 
@@ -66,7 +66,9 @@ const showModal = ref(false)
   color: black;
   &:hover {
     background-color: #b4b4b8;
+    box-shadow: 0 0 30px rgba(151, 151, 151);
     transition: 1s;
+    height: 60px;
   }
 }
 </style>
