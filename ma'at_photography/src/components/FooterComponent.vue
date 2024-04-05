@@ -76,9 +76,9 @@ a {
 }
 
 .socials {
-  transition: 0.5s;
   &:hover {
     filter: drop-shadow(0px 0px 10px);
+    transition: 0.2s;
   }
 }
 </style>

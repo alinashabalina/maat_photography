@@ -19,7 +19,11 @@ const showModal = ref(false)
   </div>
   <button class="signup-button" @click="showModal = true">Explore with us</button>
   <Teleport to="body" />
-  <ModalWindow :isShown="showModal" @close="showModal = false" header="header" />
+  <ModalWindow
+    :isShown="showModal"
+    @close="showModal = false"
+    header="explore with us"
+  ></ModalWindow>
   <FooterComponent class="footer" />
 </template>
 
