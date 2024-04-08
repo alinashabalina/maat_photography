@@ -10,7 +10,7 @@ button.header-btn {
   text-transform: uppercase;
 }
 
-button.form-btn {
+.form-btn {
   height: 50px;
   width: 200px;
   border: none;
@@ -29,6 +29,7 @@ button.form-btn {
   margin-top: 20px;
   margin-bottom: 10px;
   text-align: center;
+  font-size: 18px;
 }
 
 .input-field {
@@ -38,6 +39,15 @@ button.form-btn {
   border-radius: 10px;
 }
 
-.submit-btn {
-  background-color: #7d7d7f;
+.exit-button {
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-color: transparent;
+
+  &__btn {
+  width: inherit;
+  height: inherit;
+  opacity: 50%;
+  }
 }

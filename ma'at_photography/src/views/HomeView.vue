@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import HeaderComponent from '@/components/HeaderComponent.vue'
 import FooterComponent from '@/components/FooterComponent.vue'
-import ModalWindow from '@/components/ModalWindowComponent.vue'
+import ModalWindowComponent from '@/components/ModalWindowComponent.vue'
 const showModal = ref(false)
 </script>
 
@@ -19,11 +19,11 @@ const showModal = ref(false)
   </div>
   <button class="signup-button" @click="showModal = true">Explore with us</button>
   <Teleport to="body" />
-  <ModalWindow
+  <ModalWindowComponent
     :isShown="showModal"
     @close="showModal = false"
     header="explore with us"
-  ></ModalWindow>
+  />
   <FooterComponent class="footer" />
 </template>
 

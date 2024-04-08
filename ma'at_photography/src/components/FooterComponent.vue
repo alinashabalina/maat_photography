@@ -8,7 +8,7 @@
           <a href="https://t.me/maatzine"
             ><img src="@/assets/telegram.png" class="tlgrm-icon socials"
           /></a>
-          <a href="https://t.me/maatzine"
+          <a href="https://www.instagram.com/maat.zine"
             ><img src="@/assets/insta.png" class="insta-icon socials"
           /></a>
         </div>
