@@ -24,6 +24,7 @@ import CloseButtonComponent from '@/components/shared/CloseButtonComponent.vue'
           <slot>
             <RegistrationFormComponent></RegistrationFormComponent>
             <div class="button-container">
+
               <FormButtonComponent
                 class="button-item button-sign"
                 action="sign up"
