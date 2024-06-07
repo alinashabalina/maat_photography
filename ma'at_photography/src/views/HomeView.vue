@@ -30,7 +30,7 @@ const showModal = ref(false)
 <style scoped lang="scss">
 .main-info-container {
   margin-top: 1%;
-  width: 1300px;
+  width: 100vw;
   margin-left: auto;
   margin-right: auto;
   position: relative;

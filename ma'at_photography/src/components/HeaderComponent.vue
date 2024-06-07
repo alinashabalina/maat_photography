@@ -5,6 +5,7 @@ import ModalWindow from '@/components/ModalWindowComponent.vue'
 const about = ref('about us')
 const signup = ref('about you')
 const showModal = ref(false)
+const about_link = ref("{ path: '/about'}")
 </script>
 
 <template>
@@ -14,7 +15,9 @@ const showModal = ref(false)
         <img src="@/assets/menu.png" class="menu-icon" />
         menu
       </div>
-      <MenuButtonComponent :data="about" class="menu-button" />
+      <router-link :to="'/'" class="menu-btn">home</router-link>
+      <router-link :to="'about'" class="menu-btn">about</router-link>
+      <router-link :to="'join'" class="menu-btn">join us</router-link>
       <MenuButtonComponent :data="signup" @click="showModal = true" />
       <Teleport to="body" />
       <ModalWindow :isShown="showModal" @close="showModal = false" header="explore with us">
@@ -25,7 +28,7 @@ const showModal = ref(false)
 
 <style scoped lang="scss">
 .outer-wrapper {
-  width: 100%;
+  width: 100vw;
   height: 100px;
   border-top: 3px solid #000;
   border-bottom: 3px solid #000;
@@ -63,6 +66,7 @@ const showModal = ref(false)
   justify-content: space-around;
   align-items: center;
   text-transform: uppercase;
+  text-decoration: none;
   font-size: 22px;
   color: black;
   transition: 1s;
