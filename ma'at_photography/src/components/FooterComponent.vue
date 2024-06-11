@@ -23,14 +23,16 @@
 
 <style scoped lang="scss">
 .outer-wrapper {
-  width: 100%;
-  height: 100px;
+  width: 90vw;
+  height: 10vh;
   border-top: 3px solid #000;
   border-bottom: 3px solid #000;
+  margin-left: auto;
+  margin-right: auto;
 }
 .inner-wrapper {
-  width: 100%;
-  height: 90px;
+  width: 90vw;
+  height: 9vh;
   margin-top: 4px;
   margin-bottom: 4px;
   border-top: 1px solid #000;

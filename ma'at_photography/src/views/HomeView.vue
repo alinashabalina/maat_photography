@@ -7,7 +7,7 @@ const showModal = ref(false)
 </script>
 
 <template>
-  <HeaderComponent />
+  <HeaderComponent class="header"/>
   <div class="main-info-container">
     <img src="@/assets/DSCF0093.jpg" class="main-pic" />
   </div>
@@ -28,9 +28,11 @@ const showModal = ref(false)
 </template>
 
 <style scoped lang="scss">
+@media only screen and (max-width: 600px) {
+
 .main-info-container {
-  margin-top: 1%;
-  width: 100vw;
+  margin-top: 1vh;
+  width: 90vw;
   margin-left: auto;
   margin-right: auto;
   position: relative;
@@ -39,24 +41,25 @@ const showModal = ref(false)
 .main-pic {
   filter: grayscale(150%);
   width: inherit;
-  height: 700px;
+  height: 90vh;
 }
 
 .footer {
-  margin-top: 1%;
+  margin-top: 1vh;
 }
 
 .header-text {
-  font-size: 200px;
+  font-size: 60px;
   color: white;
   font-family: 'Cinzel', serif;
   position: absolute;
   top: 20%;
-  left: 45%;
+  left: 35%;
 
   &__info {
-    font-size: 40px;
+    font-size: 20px;
     width: 60%;
+    margin-top: 1vh;
     text-align: justify;
   }
 
@@ -68,22 +71,141 @@ const showModal = ref(false)
 .signup-button {
   border: solid 2px white;
   background-color: transparent;
-  width: 300px;
-  height: 70px;
+  width: 60vw;
+  height: 8vh;
   position: absolute;
-  top: 70%;
-  left: 20%;
+  top: 80%;
+  left: 30%;
   color: white;
   font-size: 20px;
   text-transform: uppercase;
   font-family: 'Cinzel', serif;
   border-radius: 10px;
-  transition: 1s;
+}
 
-  &:hover {
-    box-shadow: 0 0 30px rgba(151, 151, 151);
-    height: 80px;
-    font-weight: 500;
+}
+
+@media only screen and (min-width: 600px) {
+  .main-info-container {
+  margin-top: 1vh;
+  width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+.main-pic {
+  filter: grayscale(150%);
+  width: inherit;
+  height: 90vh;
+}
+
+.footer {
+  margin-top: 1vh;
+}
+
+.header-text {
+  font-size: 100px;
+  color: white;
+  font-family: 'Cinzel', serif;
+  position: absolute;
+  top: 20%;
+  left: 35%;
+
+  &__info {
+    font-size: 40px;
+    width: 60%;
+    margin-top: 1vh;
+    text-align: justify;
+  }
+
+  &__2ndline {
+    text-align: end;
   }
 }
+
+.signup-button {
+  border: solid 2px white;
+  background-color: transparent;
+  width: 40vw;
+  height: 8vh;
+  position: absolute;
+  top: 80%;
+  left: 30%;
+  color: white;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-family: 'Cinzel', serif;
+  border-radius: 10px;
+}
+
+
+}
+
+@media only screen and (min-width: 1000px) {
+
+  .main-info-container {
+  margin-top: 1vh;
+  width: 98vw;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+.main-pic {
+  filter: grayscale(150%);
+  width: 98vw;
+  height: 90vh;
+}
+
+.footer {
+  margin-top: 1vh;
+}
+
+.header-text {
+  font-size: 120px;
+  color: white;
+  font-family: 'Cinzel', serif;
+  position: absolute;
+  top: 20%;
+  left: 35%;
+
+  &__info {
+    font-size: 30px;
+    width: 60%;
+    margin-top: 1vh;
+    text-align: justify;
+  }
+
+  &__2ndline {
+    text-align: end;
+  }
+}
+
+.signup-button {
+  border: solid 2px white;
+  background-color: transparent;
+  width: 30vw;
+  height: 8vh;
+  position: absolute;
+  top: 90%;
+  left: 30%;
+  color: white;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-family: 'Cinzel', serif;
+  border-radius: 10px;
+}
+}
+
+
+
+
+
+
+
+
+
+
+
 </style>
