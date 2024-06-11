@@ -29,10 +29,7 @@ import CloseButtonComponent from '@/components/shared/CloseButtonComponent.vue'
                 class="button-item button-sign"
                 action="sign up"
               ></FormButtonComponent>
-              <FormButtonComponent
-                class="button-item button-restore"
-                action="forgot my password"
-              ></FormButtonComponent>
+              <router-link :to="'/restore'" class="button-item button-restore">restore</router-link>
             </div>
           </slot>
         </div>
