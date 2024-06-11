@@ -34,7 +34,7 @@ const about_link = ref("{ path: '/about'}")
   border-bottom: 3px solid #000;
 }
 .inner-wrapper {
-  width: 100%;
+  width: 100vw;
   height: 90px;
   margin-top: 4px;
   margin-bottom: 4px;
