@@ -163,7 +163,7 @@ const showModal = ref(false)
 }
 
 .header-text {
-  font-size: 120px;
+  font-size: 200px;
   color: white;
   font-family: 'Cinzel', serif;
   position: absolute;
@@ -197,15 +197,6 @@ const showModal = ref(false)
   border-radius: 10px;
 }
 }
-
-
-
-
-
-
-
-
-
 
 
 </style>

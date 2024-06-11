@@ -22,14 +22,13 @@ import CloseButtonComponent from '@/components/shared/CloseButtonComponent.vue'
         </div>
         <div class="modal-container__body">
           <slot>
-            <RegistrationFormComponent></RegistrationFormComponent>
+            <RegistrationFormComponent/>
             <div class="button-container">
-
               <FormButtonComponent
                 class="button-item button-sign"
                 action="sign up"
               ></FormButtonComponent>
-              <router-link :to="'/restore'" class="button-item button-restore">restore</router-link>
+              <router-link :to="'/restore'" class="button-item button-restore form-btn">restore</router-link>
             </div>
           </slot>
         </div>
@@ -50,6 +49,166 @@ import CloseButtonComponent from '@/components/shared/CloseButtonComponent.vue'
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
 }
+
+.button-restore {
+  display: inline-block;
+  text-decoration: none;
+  color: #555;
+  text-align: center;
+  line-height: 5vh;
+
+}
+
+@media only screen and (max-width: 600px) {
+
+.modal-container {
+  width: 60vw;
+  height: 50vh;
+  margin: auto;
+  padding: 10px 15px;
+  background-color: #f2efe5;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
+  transition: all 0.3s ease;
+  position: relative;
+
+  &__body {
+    width: inherit;
+  }
+
+  &__no-exit {
+    margin-top: 1vh;
+  }
+
+  &__header {
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: 20px;
+  }
+
+  &__exit-button {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+  }
+
+}
+
+.button-container {
+  margin-top: 20vh;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  width: 60vw;
+  justify-content: space-between;
+}
+
+
+.exit-button {
+  width: 3vw;
+  height: 2vh;
+  border: none;
+  background-color: transparent;
+
+  &__btn {
+  width: inherit;
+  height: inherit;
+  opacity: 50%;
+  }
+}
+
+.form-btn {
+  height: 5vh;
+  width: 25vw;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Cinzel', serif;
+  font-weight: 500;
+  background-color: #cdcbcb;
+  font-size: 18px;
+  &:hover {
+    background-color: #7d7d7f;
+    transition: 1s;
+  }
+}
+
+}
+
+@media only screen and (min-width: 600px) {
+
+.modal-container {
+  width: 60vw;
+  height: 50vh;
+  margin: auto;
+  padding: 10px 15px;
+  background-color: #f2efe5;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
+  transition: all 0.3s ease;
+  position: relative;
+
+  &__body {
+    width: inherit;
+  }
+
+  &__no-exit {
+    margin-top: 1vh;
+  }
+
+  &__header {
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: 60px;
+  }
+
+  &__exit-button {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+  }
+
+}
+
+.button-container {
+  margin-top: 20vh;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  width: 60vw;
+  justify-content: space-between;
+}
+
+.exit-button {
+  width: 3vw;
+  height: 2vh;
+  border: none;
+  background-color: transparent;
+
+  &__btn {
+  width: inherit;
+  height: inherit;
+  opacity: 50%;
+  }
+}
+
+.form-btn {
+  height: 4vh;
+  width: 27vw;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Cinzel', serif;
+  font-weight: 500;
+  background-color: #cdcbcb;
+  font-size: 18px;
+  &:hover {
+    background-color: #7d7d7f;
+    transition: 1s;
+  }
+}
+
+}
+
+@media only screen and (min-width: 1000px) {
 
 .modal-container {
   width: 500px;
@@ -92,4 +251,28 @@ import CloseButtonComponent from '@/components/shared/CloseButtonComponent.vue'
   width: 450px;
   justify-content: space-between;
 }
+
+.form-btn {
+  height: 50px;
+  width: 200px;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Cinzel', serif;
+  font-weight: 500;
+  background-color: #cdcbcb;
+  font-size: 18px;
+  &:hover {
+    background-color: #7d7d7f;
+    transition: 1s;
+  }
+}
+
+}
+
+
+
+
+
+
+
 </style>
