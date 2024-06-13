@@ -2,7 +2,6 @@
 defineProps<{
   isShown: Boolean
   header: String
-  close: Boolean
 }>()
 import RegistrationFormComponent from '@/components/RegistrationFormComponent.vue'
 import FormButtonComponent from '@/components/shared/FormButtonComponent.vue'
