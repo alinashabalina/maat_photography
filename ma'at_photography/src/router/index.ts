@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import RestoreView from '../views/RestoreView.vue'
 import AboutView from '../views/AboutView.vue'
 import JoinView from "../views/JoinView.vue";
+import GalleryView from "../views/GalleryView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +27,11 @@ const router = createRouter({
       path: '/join',
       name: 'join',
       component: JoinView
+    },
+    {
+      path: '/gallery',
+      name: 'gallery',
+      component: GalleryView
     }
   ]
 })

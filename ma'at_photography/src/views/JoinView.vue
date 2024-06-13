@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import axios from 'axios';
 import { ref } from 'vue'
+import HeaderComponent from "@/components/HeaderComponent.vue";
 const email = ref('')
 const social = ref('')
 const name = ref('')
@@ -24,6 +25,7 @@ async function submitForm(event:any) {
 </script>
 
 <template>
+  <HeaderComponent class="head"/>
   <div class="header">Join us</div>
   <form class="form-wrapper">
     <div class="email-wrapper">

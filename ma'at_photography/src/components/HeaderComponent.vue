@@ -2,10 +2,8 @@
 import { ref } from 'vue'
 import MenuButtonComponent from '@/components/MenuButtonComponent.vue'
 import ModalWindow from '@/components/ModalWindowComponent.vue'
-const about = ref('about us')
-const signup = ref('about you')
+const signup = ref('login')
 const showModal = ref(false)
-const about_link = ref("{ path: '/about'}")
 </script>
 
 <template>
@@ -16,8 +14,9 @@ const about_link = ref("{ path: '/about'}")
         menu
       </div>
       <router-link :to="'/'" class="menu-btn">home</router-link>
-      <router-link :to="'about'" class="menu-btn">about us</router-link>
-      <router-link :to="'join'" class="menu-btn">join us</router-link>
+      <router-link :to="'about'" class="menu-btn">about</router-link>
+      <router-link :to="'gallery'" class="menu-btn">gallery</router-link>
+      <router-link :to="'join'" class="menu-btn">join</router-link>
       <MenuButtonComponent :data="signup" @click="showModal = true" class="menu-btn"/>
       <Teleport to="body" />
       <ModalWindow :isShown="showModal" @close="showModal = false" header="explore with us">
