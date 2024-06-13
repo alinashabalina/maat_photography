@@ -10,7 +10,7 @@ const showModal = ref(false)
   <div class="outer-wrapper">
     <div class="inner-wrapper">
       <div class="menu-btn">
-        <img src="@/assets/menu.png" class="menu-icon" />
+        <img src="@/assets/menu.png" class="menu-icon" alt="menu icon"/>
         menu
       </div>
       <router-link :to="'/'" class="menu-btn">home</router-link>
