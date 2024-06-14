@@ -1,14 +1,17 @@
 <script setup lang="ts">
 defineProps<{
-  name: String
+  name: String,
+  click: String,
+  issue: String
 }>()
+
 </script>
 
 <template>
   <div class="issue">
     <div class="cover2"></div>
     <div class="page5"></div>
-    <div class="page4"></div>
+    <div class="page4"><div class="click" >{{ click }}</div> </div>
     <div class="page3"></div>
     <div class="page2"></div>
     <div class="page1"></div>
@@ -32,7 +35,6 @@ defineProps<{
     position: relative;
     height: 20vh;
     width: 30vw;
-    cursor: pointer;
     backface-visibility: visible;
   }
 
@@ -44,6 +46,13 @@ defineProps<{
     top: 0; left: 0;
     transform-origin: left center;
     transition: transform .5s ease-in-out, box-shadow .35s ease-in-out;
+  }
+
+  .click {
+    margin-top: 7vh;
+    margin-left: 3vw;
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
   }
 
   .cover1, .cover2 {
@@ -132,6 +141,13 @@ defineProps<{
     width: 100%;
   }
 
+  .click {
+    margin-top: 7vh;
+    margin-left: 3vw;
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+  }
+
   .issue {
     transform-style: preserve-3d;
     position: relative;
@@ -152,6 +168,11 @@ defineProps<{
 
   .cover1, .cover2 {
     background-color: #555555;
+    color: white;
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    text-align: center;
+    line-height: 20vh;
   }
 
   .cover1, .page1, .page3, .page5 {
@@ -229,6 +250,13 @@ defineProps<{
     background: #ccc;
   }
 
+  .click {
+    margin-top: 7vh;
+    margin-left: 3vw;
+    font-family: 'Cinzel', serif;
+    font-size: 24px;
+  }
+
   .issue {
     transform-style: preserve-3d;
     position: relative;
@@ -250,6 +278,11 @@ defineProps<{
 
   .cover1, .cover2 {
     background-color: #555555;
+    color: white;
+    font-family: 'Cinzel', serif;
+    font-size: 36px;
+    text-align: center;
+    line-height: 20vh;
   }
 
   .cover1, .page1, .page3, .page5 {
