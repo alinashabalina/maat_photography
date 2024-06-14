@@ -14,9 +14,9 @@ const routing = (ev: Event) => {window.location.href = `/issue/${ev.currentTarge
   <div class="wrapper">
     <IssueComponent :name="issue + 1" :click = "click" class="issue odd"
                     id="1" @click = "routing"/>
-    <IssueComponent :name="issue + 2" class="issue disabled" id="2" @click = "routing" />
-    <IssueComponent :name="issue + 3" class="issue odd disabled" id="3" @click = "routing"/>
-    <IssueComponent :name="issue + 4" class="issue disabled" id="4" @click = "routing"/>
+    <IssueComponent :name="issue + 2" :click = "click" class="issue disabled" id="2" @click = "routing" />
+    <IssueComponent :name="issue + 3" :click = "click" class="issue odd disabled" id="3" @click = "routing"/>
+    <IssueComponent :name="issue + 4" :click = "click" class="issue disabled" id="4" @click = "routing"/>
   </div>
 </template>
 
