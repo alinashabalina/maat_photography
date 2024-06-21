@@ -28,6 +28,8 @@ const showModal = ref(false)
 </template>
 
 <style scoped lang="scss">
+@use 'views';
+
 @media only screen and (max-width: 600px) {
 
 .main-info-container {
@@ -50,8 +52,8 @@ const showModal = ref(false)
 
 .header-text {
   font-size: 60px;
-  color: white;
-  font-family: 'Cinzel', serif;
+  color: views.$white-header;
+  font-family: views.$primary-font;
   position: absolute;
   top: 20%;
   left: 35%;
@@ -76,10 +78,10 @@ const showModal = ref(false)
   position: absolute;
   top: 80%;
   left: 30%;
-  color: white;
+  color: views.$white-header;
   font-size: 20px;
   text-transform: uppercase;
-  font-family: 'Cinzel', serif;
+  font-family: views.$primary-font;
   border-radius: 10px;
 }
 
@@ -106,8 +108,8 @@ const showModal = ref(false)
 
 .header-text {
   font-size: 100px;
-  color: white;
-  font-family: 'Cinzel', serif;
+  color: views.$white-header;
+  font-family: views.$primary-font;
   position: absolute;
   top: 20%;
   left: 35%;
@@ -132,10 +134,10 @@ const showModal = ref(false)
   position: absolute;
   top: 80%;
   left: 30%;
-  color: white;
+  color: views.$white-header;
   font-size: 20px;
   text-transform: uppercase;
-  font-family: 'Cinzel', serif;
+  font-family: views.$primary-font;
   border-radius: 10px;
 }
 
@@ -164,8 +166,8 @@ const showModal = ref(false)
 
 .header-text {
   font-size: 200px;
-  color: white;
-  font-family: 'Cinzel', serif;
+  color: views.$white-header;
+  font-family: views.$primary-font;
   position: absolute;
   top: 20%;
   left: 35%;
@@ -190,10 +192,10 @@ const showModal = ref(false)
   position: absolute;
   top: 90%;
   left: 30%;
-  color: white;
+  color: views.$white-header;
   font-size: 20px;
   text-transform: uppercase;
-  font-family: 'Cinzel', serif;
+  font-family: views.$primary-font;
   border-radius: 10px;
 }
 }

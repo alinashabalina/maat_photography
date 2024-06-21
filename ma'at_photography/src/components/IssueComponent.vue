@@ -1,6 +1,6 @@
 <script setup lang="ts">
 defineProps<{
-  name: String,
+  name: any,
   click: String
 }>()
 

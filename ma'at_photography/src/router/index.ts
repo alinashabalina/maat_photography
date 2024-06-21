@@ -4,7 +4,7 @@ import RestoreView from '../views/RestoreView.vue'
 import AboutView from '../views/AboutView.vue'
 import JoinView from "../views/JoinView.vue";
 import GalleryView from "../views/GalleryView.vue";
-
+import IssueView from "../views/IssueView.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -32,6 +32,10 @@ const router = createRouter({
       path: '/gallery',
       name: 'gallery',
       component: GalleryView
+    },
+    {
+      path: '/issue/:id',
+      component: IssueView
     }
   ]
 })

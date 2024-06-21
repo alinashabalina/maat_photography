@@ -5,7 +5,6 @@ import {ref} from "vue";
 const issue = ref(0)
 const click = ref("click to open")
 
-
 const routing = (ev: Event) => {window.location.href = `/issue/${ev.currentTarget.id}`}
 </script>
 
