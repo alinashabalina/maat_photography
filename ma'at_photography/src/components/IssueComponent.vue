@@ -286,7 +286,7 @@ defineProps<{
   .cover1, .cover2 {
     background-color: #555555;
     color: white;
-    font-family: 'Cinzel', serif;
+    font-family: views.$primary-font;
     font-size: 36px;
     text-align: center;
     line-height: 20vh;
