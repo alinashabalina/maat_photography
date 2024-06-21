@@ -1,4 +1,4 @@
-<script setup lang="ts"></script>
+<script lang="ts" setup></script>
 
 <template>
   <div class="outer-wrapper">
@@ -6,10 +6,10 @@
       <div class="socials-wrapper">
         <div class="socials-icons">
           <a href="https://t.me/maatzine"
-            ><img src="@/assets/telegram.png" class="tlgrm-icon socials"
+          ><img class="tlgrm-icon socials" src="@/assets/telegram.png"
           /></a>
           <a href="https://www.instagram.com/maat.zine"
-            ><img src="@/assets/insta.png" class="insta-icon socials"
+          ><img class="insta-icon socials" src="@/assets/insta.png"
           /></a>
         </div>
         <div class="socials-wrapper__attribute">
@@ -21,7 +21,9 @@
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
+@use 'components';
+
 .outer-wrapper {
   width: 90vw;
   height: 10vh;
@@ -30,6 +32,7 @@
   margin-left: auto;
   margin-right: auto;
 }
+
 .inner-wrapper {
   width: 90vw;
   height: 9vh;
@@ -69,8 +72,9 @@
   width: 52px;
   height: 52px;
 }
+
 a {
-  color: #b4b4b8;
+  color: components.$dark-grey;
 
   &:visited {
     color: #000;

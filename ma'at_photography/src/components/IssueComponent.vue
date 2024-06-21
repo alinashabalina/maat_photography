@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 defineProps<{
   name: any,
   click: String
@@ -10,7 +10,9 @@ defineProps<{
   <div class="issue">
     <div class="cover2"></div>
     <div class="page5"></div>
-    <div class="page4"><div class="click" >{{ click }}</div> </div>
+    <div class="page4">
+      <div class="click">{{ click }}</div>
+    </div>
     <div class="page3"></div>
     <div class="page2"></div>
     <div class="page1"></div>
@@ -18,7 +20,10 @@ defineProps<{
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
+@use 'components';
+@use '../views/views';
+
 @media only screen and (max-width: 600px) {
 
   body {
@@ -42,7 +47,8 @@ defineProps<{
     position: absolute;
     width: 20vw;
     height: 100%;
-    top: 0; left: 0;
+    top: 0;
+    left: 0;
     transform-origin: left center;
     transition: transform .5s ease-in-out, box-shadow .35s ease-in-out;
   }
@@ -50,14 +56,14 @@ defineProps<{
   .click {
     margin-top: 7vh;
     margin-left: 3vw;
-    font-family: 'Cinzel', serif;
+    font-family: views.$primary-font;
     font-size: 12px;
   }
 
   .cover1, .cover2 {
     background-color: #555555;
-    color: white;
-    font-family: 'Cinzel', serif;
+    color: views.$white-header;
+    font-family: views.$primary-font;
     font-size: 14px;
     text-align: center;
     line-height: 20vh;
@@ -75,23 +81,23 @@ defineProps<{
   }
 
   .page1 {
-    background: #efefef;
+    background: components.$light-grey;
   }
 
   .page2 {
-    background: #efefef;
+    background: components.$light-grey;
   }
 
   .page3 {
-    background: #f5f5f5;
+    background: components.$light-grey;
   }
 
   .page4 {
-    background: #f5f5f5;
+    background: components.$light-grey;
   }
 
   .page5 {
-    background: #fafafa;
+    background: components.$light-grey;
   }
 
   .issue:hover .cover1 {
@@ -143,7 +149,7 @@ defineProps<{
   .click {
     margin-top: 7vh;
     margin-left: 3vw;
-    font-family: 'Cinzel', serif;
+    font-family: views.$primary-font;
     font-size: 18px;
   }
 
@@ -160,7 +166,8 @@ defineProps<{
     transform-style: preserve-3d;
     position: absolute;
     width: 30vw;
-    top: 0; left: 0;
+    top: 0;
+    left: 0;
     transform-origin: left center;
     transition: transform .5s ease-in-out, box-shadow .35s ease-in-out;
   }
@@ -168,7 +175,7 @@ defineProps<{
   .cover1, .cover2 {
     background-color: #555555;
     color: white;
-    font-family: 'Cinzel', serif;
+    font-family: views.$primary-font;
     font-size: 14px;
     text-align: center;
     line-height: 20vh;
@@ -185,23 +192,23 @@ defineProps<{
   }
 
   .page1 {
-    background: #efefef;
+    background: components.$light-grey;
   }
 
   .page2 {
-    background: #efefef;
+    background: components.$light-grey;
   }
 
   .page3 {
-    background: #f5f5f5;
+    background: components.$light-grey;
   }
 
   .page4 {
-    background: #f5f5f5;
+    background: components.$light-grey;
   }
 
   .page5 {
-    background: #fafafa;
+    background: components.$light-grey;
   }
 
   .issue:hover .cover1 {
@@ -252,7 +259,7 @@ defineProps<{
   .click {
     margin-top: 7vh;
     margin-left: 3vw;
-    font-family: 'Cinzel', serif;
+    font-family: views.$primary-font;
     font-size: 24px;
   }
 
@@ -270,7 +277,8 @@ defineProps<{
     position: absolute;
     width: 15vw;
     height: 30vh;
-    top: 0; left: 0;
+    top: 0;
+    left: 0;
     transform-origin: left center;
     transition: transform .5s ease-in-out, box-shadow .35s ease-in-out;
   }
@@ -295,23 +303,23 @@ defineProps<{
   }
 
   .page1 {
-    background: #efefef;
+    background: components.$light-grey;
   }
 
   .page2 {
-    background: #efefef;
+    background: components.$light-grey;
   }
 
   .page3 {
-    background: #f5f5f5;
+    background: components.$light-grey;
   }
 
   .page4 {
-    background: #f5f5f5;
+    background: components.$light-grey;
   }
 
   .page5 {
-    background: #fafafa;
+    background: components.$light-grey;
   }
 
   .issue:hover .cover1 {
@@ -348,6 +356,5 @@ defineProps<{
     transform: rotateY(-20deg) scale(1.1);
   }
 }
-
 
 </style>
