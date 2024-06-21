@@ -10,19 +10,19 @@ const isHidden = ref(true)
   <HeaderComponent/>
   <div class="info-wrapper">
     <div class="autor-wrapper">
-      <img class="autor-pic" src="@/assets/DSCF0093.jpg" @click="isHidden = !isHidden"/>
-      <img class="autor-pic" src="@/assets/DSCF0093.jpg" @click="isHidden = !isHidden"/>
-      <img class="autor-pic" src="@/assets/DSCF0093.jpg"/>
-      <img class="autor-pic" src="@/assets/DSCF0093.jpg"/>
-      <img class="autor-pic" src="@/assets/DSCF0093.jpg"/>
-      <img class="autor-pic" src="@/assets/DSCF0093.jpg"/>
-      <img class="autor-pic" src="@/assets/DSCF0093.jpg"/>
-      <img class="autor-pic" src="@/assets/DSCF0093.jpg"/>
-      <img class="autor-pic" src="@/assets/DSCF0093.jpg"/>
-      <img class="autor-pic" src="@/assets/DSCF0093.jpg"/>
+      <img class="autor-pic" src="@/assets/DSCF0093.jpg" @click="isHidden = !isHidden" alt="author"/>
+      <img class="autor-pic" src="@/assets/DSCF0093.jpg" @click="isHidden = !isHidden" alt="author"/>
+      <img class="autor-pic" src="@/assets/DSCF0093.jpg" @click="isHidden = !isHidden" alt="author"/>
+      <img class="autor-pic" src="@/assets/DSCF0093.jpg" @click="isHidden = !isHidden" alt="author"/>
+      <img class="autor-pic" src="@/assets/DSCF0093.jpg" @click="isHidden = !isHidden" alt="author"/>
+      <img class="autor-pic" src="@/assets/DSCF0093.jpg" @click="isHidden = !isHidden" alt="author"/>
+      <img class="autor-pic" src="@/assets/DSCF0093.jpg" @click="isHidden = !isHidden" alt="author"/>
+      <img class="autor-pic" src="@/assets/DSCF0093.jpg" @click="isHidden = !isHidden" alt="author"/>
+      <img class="autor-pic" src="@/assets/DSCF0093.jpg" @click="isHidden = !isHidden" alt="author"/>
+      <img class="autor-pic" src="@/assets/DSCF0093.jpg" @click="isHidden = !isHidden" alt="author"/>
     </div>
     <div v-show="isHidden" class="socials-wrapper">
-      <img class="autor-pic__larger" src="@/assets/DSCF0093.jpg"/>
+      <img class="autor-pic__larger" src="@/assets/DSCF0093.jpg" alt="author larger pic"/>
       <button class="socials-button">hello</button>
       <button class="socials-button">hello</button>
       <button class="socials-button">hello</button>
@@ -67,7 +67,7 @@ const isHidden = ref(true)
     position: relative;
 
     &:hover {
-      box-shadow: 2px 2px 5px 0px rgb(95, 94, 94);
+      box-shadow: 2px 2px 5px 0 rgb(95, 94, 94);
     }
 
     &__larger {
@@ -138,7 +138,7 @@ const isHidden = ref(true)
     position: relative;
 
     &:hover {
-      box-shadow: 2px 2px 5px 0px rgb(95, 94, 94);
+      box-shadow: 2px 2px 5px 0 rgb(95, 94, 94);
     }
 
     &__larger {
@@ -209,7 +209,7 @@ const isHidden = ref(true)
     position: relative;
 
     &:hover {
-      box-shadow: 2px 2px 5px 0px rgb(95, 94, 94);
+      box-shadow: 2px 2px 5px 0 rgb(95, 94, 94);
     }
 
     &__larger {

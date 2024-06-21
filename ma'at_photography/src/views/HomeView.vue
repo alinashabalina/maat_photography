@@ -9,7 +9,7 @@ const showModal = ref(false)
 <template>
   <HeaderComponent class="header"/>
   <div class="main-info-container">
-    <img src="@/assets/DSCF0093.jpg" class="main-pic" />
+    <img src="@/assets/DSCF0093.jpg" class="main-pic" alt="picture of the week"/>
   </div>
   <div class="header-text">
     <div class="header-text__header">MAʽAT</div>
