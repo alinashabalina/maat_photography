@@ -2,7 +2,6 @@
 import {ref} from 'vue'
 import MenuButtonComponent from '@/components/MenuButtonComponent.vue'
 import ModalWindow from '@/components/ModalWindowComponent.vue'
-
 const signup = ref('login')
 const showModal = ref(false)
 </script>
@@ -14,7 +13,7 @@ const showModal = ref(false)
         <img alt="menu icon" class="menu-icon" src="@/assets/menu.png"/>
         menu
       </div>
-      <router-link :to="'/'" class="menu-btn">home</router-link>
+      <router-link :to="'/personal'" class="menu-btn">home</router-link>
       <router-link :to="'about'" class="menu-btn">about</router-link>
       <router-link :to="'gallery'" class="menu-btn">gallery</router-link>
       <router-link :to="'join'" class="menu-btn">join</router-link>

@@ -1,11 +1,12 @@
 <script setup lang="ts">
+import MainPhotoComponent from "@/components/MainPhotoComponent.vue";
 defineProps<{
   text: String
 }>()
 </script>
 
 <template>
-  <img class="article-pic" src="@/assets/DSC3218.jpg" alt="main article picture"/>
+  <MainPhotoComponent class="article-pic" />
   <div class="article-text"> {{ text }} </div>
 </template>
 

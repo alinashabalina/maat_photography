@@ -1,10 +1,9 @@
 <script setup lang="ts">
 
-import HeaderComponent from "@/components/HeaderComponent.vue";
 </script>
 
 <template>
-  <HeaderComponent/>
+  <img alt="article pic" src="@/assets/DSC3218.jpg"/>
 </template>
 
 <style scoped lang="scss">

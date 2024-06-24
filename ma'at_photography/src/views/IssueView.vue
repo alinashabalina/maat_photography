@@ -1,10 +1,12 @@
 <script lang="ts" setup>
 import ArticleComponent from "@/components/ArticleComponent.vue";
-
+import HeaderComponent from "@/components/HeaderComponent.vue";
+import MinorPhotoComponent from "@/components/MinorPhotoComponent.vue";
 const text = "lala"
 </script>
 
 <template>
+  <HeaderComponent/>
   <div class="wrapper">
     <div class="wrapper-light">
       <div class="header">Issue {{ $route.params.id }}</div>
@@ -13,12 +15,9 @@ const text = "lala"
       </div>
     </div>
     <div class="wrapper__dark">
-      <router-link :to="`/issue/${$route.params.id}/article`"><img alt="article pic" class="small-pic"
-                                                                   src="@/assets/DSC3218.jpg"/></router-link>
-      <router-link :to="`/issue/${$route.params.id}/gallery`"><img alt="article pic" class="small-pic"
-                                                                   src="@/assets/DSC3218.jpg"/></router-link>
-      <router-link :to="`/issue/${$route.params.id}/gallery`"><img alt="article pic" class="small-pic"
-                                                                   src="@/assets/DSC3218.jpg"/></router-link>
+      <router-link :to="`/issue/${$route.params.id}/article`"><MinorPhotoComponent class="small-pic"/></router-link>
+      <router-link :to="`/issue/${$route.params.id}/gallery`"><MinorPhotoComponent class="small-pic"/></router-link>
+      <router-link :to="`/issue/${$route.params.id}/gallery`"><MinorPhotoComponent class="small-pic"/></router-link>
     </div>
   </div>
 
@@ -26,6 +25,7 @@ const text = "lala"
 
 <style lang="scss" scoped>
 @use "views";
+@use "../components/components";
 
 @media only screen and (max-width: 600px) {
 
@@ -37,9 +37,8 @@ const text = "lala"
   }
   .wrapper {
     width: 99vw;
-    height: 102vh;
+    height: 95vh;
     display: flex;
-    margin-top: -2vh;
 
     &__light {
       width: 60vw;
@@ -48,7 +47,7 @@ const text = "lala"
 
     &__dark {
       width: 40vw;
-      background-color: views.$dark-wrapper;
+      background-color: components.$mid-grey;
       display: flex;
       flex-direction: column;
       justify-content: space-around;
@@ -80,7 +79,6 @@ const text = "lala"
     width: 99vw;
     height: 102vh;
     display: flex;
-    margin-top: -2vh;
 
     &__light {
       width: 60vw;
@@ -89,7 +87,7 @@ const text = "lala"
 
     &__dark {
       width: 40vw;
-      background-color: views.$dark-wrapper;
+      background-color: components.$mid-grey;
       display: flex;
       flex-direction: column;
       justify-content: space-around;
@@ -122,7 +120,6 @@ const text = "lala"
     width: 99vw;
     height: 102vh;
     display: flex;
-    margin-top: -2vh;
     overflow: hidden;
 
     &__light {
@@ -132,7 +129,7 @@ const text = "lala"
 
     &__dark {
       width: 40vw;
-      background-color: views.$dark-wrapper;
+      background-color: components.$mid-grey;
       display: flex;
       flex-direction: column;
       justify-content: space-around;

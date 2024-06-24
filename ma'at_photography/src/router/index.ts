@@ -7,6 +7,8 @@ import GalleryView from "../views/GalleryView.vue";
 import IssueView from "../views/IssueView.vue";
 import IssueMainArticleView from "../views/IssueMainArticleView.vue";
 import IssueGalleryView from "../views/IssueGalleryView.vue";
+import SignUpView from "@/views/SignUpView.vue";
+import PersonalAreaView from "@/views/PersonalAreaView.vue";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,6 +22,16 @@ const router = createRouter({
             path: '/restore',
             name: 'restore',
             component: RestoreView
+        },
+        {
+            path: '/signup',
+            name: 'signup',
+            component: SignUpView
+        },
+        {
+            path: '/personal',
+            name: 'personal',
+            component: PersonalAreaView,
         },
         {
             path: '/about',

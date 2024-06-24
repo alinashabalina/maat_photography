@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import HeaderComponent from "@/components/HeaderComponent.vue";
 </script>
 
 <template>
-  <div>opop</div>
+  <HeaderComponent/>
 </template>
 
 <style scoped lang="scss">
