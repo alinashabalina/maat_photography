@@ -47,10 +47,11 @@ const text = "lala"
 
     &__dark {
       width: 40vw;
-      background-color: components.$mid-grey;
+      background-color: #e8e1d4;
       display: flex;
       flex-direction: column;
       justify-content: space-around;
+      border-radius: 10px;
     }
   }
 
