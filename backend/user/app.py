@@ -2,10 +2,11 @@ import json
 import os
 
 from dotenv import load_dotenv
-from flask import Flask, jsonify, request, flash
+from flask import Flask, jsonify, request
 from flask_bcrypt import check_password_hash, generate_password_hash
 from flask_login import LoginManager, current_user, login_user, login_required, logout_user
 
+from static import ResponseSuccess, ResponseFailure
 from user import UserDB
 
 load_dotenv()
@@ -24,27 +25,29 @@ def load_user(user_id):
 def register():
     try:
         if current_user.is_authenticated:
-            flash("You are already registered")
+            response = ResponseSuccess.response_already_registered
+            return jsonify(response), 400
         else:
             password = json.loads(request.data)['password']
             email = json.loads(request.data)['email']
             password_hash = generate_password_hash(password, 10).decode('utf8')
             user = UserDB().add_user(email, password_hash)
             if user:
-                response = {"message": "You have successfully registered"}
+                response = ResponseSuccess.response_registered
                 return jsonify(response), 200
             else:
-                response = {"message": "You are not registered. Please try again later"}
+                response = ResponseFailure.response_not_registered
                 return jsonify(response), 400
     except Exception as e:
-        return e.args
+        response = {"message": e.args}
+        return jsonify(response), 400
 
 
 @app.route('/login', methods=['POST'])
 def login():
     try:
         if current_user.is_authenticated:
-            response = {"message": current_user.email}
+            response = ResponseSuccess.response_already_logged_in
             return jsonify(response), 200
         else:
             if request.method == 'POST':
@@ -53,13 +56,13 @@ def login():
                 user = UserDB().find_user(email)
                 if user and check_password_hash(user.password_hash, password):
                     if login_user(user):
-                        response = {"message": "You are successfully logged in"}
+                        response = ResponseSuccess.response_logged_in
                         return jsonify(response), 200
                     else:
-                        response = {"message": "Try again later"}
+                        response = ResponseFailure.response_not_logged_in
                         return jsonify(response), 400
                 else:
-                    response = {"message": "Either your email or your password are incorrect. Please try again"}
+                    response = ResponseFailure.response_incorrect_data
                     return jsonify(response), 400
     except Exception as e:
         response = {"message": e.args}
@@ -72,8 +75,11 @@ def logout():
     try:
         if current_user.is_authenticated:
             logout_user()
-            response = {"message": "You are logged out"}
+            response = ResponseSuccess.response_logged_out
             return jsonify(response), 200
+        else:
+            response = ResponseFailure.response_not_logged_in
+            return jsonify(response), 400
     except Exception as e:
         response = {"message": e.args}
         return jsonify(response), 400
