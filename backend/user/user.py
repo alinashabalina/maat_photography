@@ -1,6 +1,6 @@
 from flask_login import LoginManager, UserMixin
 
-from init_db import DataBase
+from database.init_db import DataBase
 
 login_manager = LoginManager()
 
@@ -24,8 +24,22 @@ class UserDB(DataBase):
     def __init__(self):
         super().__init__()
         self.cur.execute(
-            '''CREATE TABLE IF NOT EXISTS users (id serial \
-        PRIMARY KEY, username varchar(150), email varchar(256), password_hash varchar, is_admin boolean);''')
+            '''CREATE TABLE IF NOT EXISTS users
+(
+    id
+    serial \
+    PRIMARY
+    KEY,
+    username
+    varchar
+(
+    150
+), email varchar
+(
+    256
+), UNIQUE(email), 
+    password_hash varchar, is_admin boolean);
+''')
         self.conn.commit()
 
     def add_user(self, email, password):

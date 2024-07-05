@@ -6,20 +6,13 @@ import HeaderComponent from "@/components/HeaderComponent.vue";
 const email = ref('')
 const password = ref('')
 const name = ref('')
-const isDisabled = ref(true)
 
 async function submitForm(event: any) {
   const body = {email: email.value, password: password.value};
   console.log(body);
-  isDisabled.value = true;
-  if (body.email.length === 0 || body.password.length === 0) {
-    isDisabled.value
-  } else {
-    isDisabled.value = false;
-  }
   try {
     event.preventDefault();
-    const response = await axios.post("https://reqres.in/api/articles", body);
+    const response = await axios.post("http://127.0.0.1:5000/register", body);
     email.value = '';
     password.value = '';
     console.log(response)
@@ -49,7 +42,7 @@ async function submitForm(event: any) {
       <div class="input-label">Confirm your password</div>
       <input v-model="password" class="input-field input-field__email" type="password"/>
     </div>
-    <input :disabled="isDisabled" class="input-submit form-btn button-item"
+    <input class="input-submit form-btn button-item"
            type="submit" value="sign in" @click="submitForm"/>
   </form>
 </template>

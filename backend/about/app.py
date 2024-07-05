@@ -7,8 +7,8 @@ from flask_bcrypt import check_password_hash, generate_password_hash
 from flask_cors import CORS, cross_origin
 from flask_login import LoginManager, current_user, login_user, logout_user, login_required
 
-from user.static import ResponseSuccess, ResponseFailure
-from user.user import UserDB
+from static import ResponseSuccess, ResponseFailure
+from about.about import AboutDB
 
 load_dotenv()
 app = Flask(__name__)
