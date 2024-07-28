@@ -6,7 +6,9 @@ from flask import Flask, jsonify, request
 from flask_bcrypt import check_password_hash, generate_password_hash
 from flask_cors import CORS, cross_origin
 from flask_login import LoginManager, current_user, login_user, logout_user, login_required
+from flask_mail import Mail
 
+from about.about import AboutDB
 from user.static import ResponseSuccess, ResponseFailure
 from user.user import UserDB
 
@@ -16,6 +18,7 @@ login_manager = LoginManager()
 app.secret_key = os.getenv('FLASK_SECRET_KEY')
 login_manager.init_app(app)
 CORS(app)
+mail = Mail(app)
 
 
 @login_manager.user_loader
@@ -84,7 +87,36 @@ def logout():
         return jsonify(response), 400
 
 
-@app.route('/', methods=['GET'])
-def index():
-    response = {"message": True}
+@app.route('/about/create', methods=['POST'])
+def create_about():
+    name = json.loads(request.data)['name']
+    social_1 = json.loads(request.data)['social_1']
+    social_2 = json.loads(request.data)['social_2']
+    social_3 = json.loads(request.data)['social_3']
+    photo_link = json.loads(request.data)['photo_link']
+
+    about = AboutDB().add_about_user(name, social_1, social_2, social_3, photo_link)
+
+    response = {"message": "successfully created",
+                "data": {"user_name": about.name, "social_1": about.social_1, "social_2": about.social_2,
+                         "social_3": about.social_3, "photo": about.photo_link}}
+    return jsonify(response), 201
+
+
+@app.route('/about', methods=['GET'])
+def about_page():
+    items = []
+    data = AboutDB().select_all_abouts()
+    for el in data:
+        item = {}
+        item["id"] = el.id
+        item["name"] = el.name
+        item["photo_link"] = el.photo_link
+        item["socials"] = []
+        for i in [el.social_1, el.social_2, el.social_3]:
+            if i != "":
+                item["socials"].append(i)
+        items.append(item)
+
+    response = {"message": items}
     return jsonify(response), 200
