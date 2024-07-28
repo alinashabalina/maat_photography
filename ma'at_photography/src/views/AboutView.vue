@@ -1,33 +1,33 @@
 <script lang="ts" setup>
 import HeaderComponent from '@/components/HeaderComponent.vue'
 import FooterComponent from '@/components/FooterComponent.vue'
-import {ref} from 'vue';
-
+import { AboutStore } from '@/stores/AboutStore'
+import {ref} from "vue";
 const isHidden = ref(true)
+const store = AboutStore()
+const items = store.allAbouts
+let data: any[]
+let pic: string
+function showInfo(user_id: number): any {
+  isHidden.value = !isHidden.value
+  data = store.getSocialsById(user_id)
+  pic = store.getPicById(user_id)
+  return [data, pic]
+}
+
 </script>
 
 <template>
   <HeaderComponent/>
   <div class="info-wrapper">
     <div class="autor-wrapper">
-      <img class="autor-pic" src="@/assets/DSCF0093.jpg" @click="isHidden = !isHidden" alt="author"/>
-      <img class="autor-pic" src="@/assets/DSCF0093.jpg" @click="isHidden = !isHidden" alt="author"/>
-      <img class="autor-pic" src="@/assets/DSCF0093.jpg" @click="isHidden = !isHidden" alt="author"/>
-      <img class="autor-pic" src="@/assets/DSCF0093.jpg" @click="isHidden = !isHidden" alt="author"/>
-      <img class="autor-pic" src="@/assets/DSCF0093.jpg" @click="isHidden = !isHidden" alt="author"/>
-      <img class="autor-pic" src="@/assets/DSCF0093.jpg" @click="isHidden = !isHidden" alt="author"/>
-      <img class="autor-pic" src="@/assets/DSCF0093.jpg" @click="isHidden = !isHidden" alt="author"/>
-      <img class="autor-pic" src="@/assets/DSCF0093.jpg" @click="isHidden = !isHidden" alt="author"/>
-      <img class="autor-pic" src="@/assets/DSCF0093.jpg" @click="isHidden = !isHidden" alt="author"/>
-      <img class="autor-pic" src="@/assets/DSCF0093.jpg" @click="isHidden = !isHidden" alt="author"/>
-    </div>
-    <div v-show="isHidden" class="socials-wrapper">
-      <img class="autor-pic__larger" src="@/assets/DSCF0093.jpg" alt="author larger pic"/>
-      <button class="socials-button">hello</button>
-      <button class="socials-button">hello</button>
-      <button class="socials-button">hello</button>
+      <img class="autor-pic" v-for="item in items[0]" :key="item.id" :src="item.photo_link" @click="showInfo(item.id)" alt="author"/>
     </div>
     <div v-show="!isHidden" class="socials-wrapper">
+      <img class="autor-pic__larger" :src=pic alt="author larger pic"/>
+      <button v-for="social in data" :key="social" class="socials-button"> {{ social }} </button>
+    </div>
+    <div v-show="isHidden" class="socials-wrapper">
       click the userpic to see the author's socials
     </div>
   </div>

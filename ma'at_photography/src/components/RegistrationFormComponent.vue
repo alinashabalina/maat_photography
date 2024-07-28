@@ -9,7 +9,6 @@ const password = ref('')
 
 async function submitForm(event: any) {
   const body = {email: email.value, password: password.value};
-  console.log(body);
   try {
     event.preventDefault();
     const response = await axios.post("http://127.0.0.1:5000/register", body);
