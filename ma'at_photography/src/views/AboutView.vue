@@ -25,7 +25,7 @@ function showInfo(user_id: number): any {
     </div>
     <div v-show="!isHidden" class="socials-wrapper">
       <img class="autor-pic__larger" :src=pic alt="author larger pic"/>
-      <button v-for="social in data" :key="social" class="socials-button"> {{ social }} </button>
+      <a v-for="social in data" :key="social" :href="social" target="_blank" class="socials-button"> {{ social }} </a>
     </div>
     <div v-show="isHidden" class="socials-wrapper">
       click the userpic to see the author's socials
@@ -93,17 +93,23 @@ function showInfo(user_id: number): any {
   .socials-button {
     width: 40vw;
     height: 4vh;
+    line-height: 4vh;
     border-radius: 10px;
     border: 1px solid black;
     background-color: views.$primary-color;
     transition: 0.5s;
     margin-top: 2vh;
     margin-bottom: 2vh;
+    color: black;
+    text-decoration: none;
+    text-align: center;
 
     &:hover {
       box-shadow: 0 0 30px rgba(151, 151, 151);
       height: 5vh;
+      line-height: 5vh;
       transition: 0.5s;
+      color: inherit;
     }
   }
 }
@@ -164,17 +170,22 @@ function showInfo(user_id: number): any {
   .socials-button {
     width: 40vw;
     height: 4vh;
+    line-height: 2vh;
     border-radius: 10px;
     border: 1px solid black;
     background-color: #f2efe5;
     transition: 0.5s;
     margin-top: 2vh;
     margin-bottom: 2vh;
+    text-align: center;
+    color: black;
 
     &:hover {
       box-shadow: 0 0 30px rgba(151, 151, 151);
       height: 5vh;
+      line-height: 5vh;
       transition: 0.5s;
+      color:black;
     }
   }
 }
@@ -230,22 +241,25 @@ function showInfo(user_id: number): any {
     display: flex;
     margin-left: 15vw;
     font-family: views.$primary-font;
-    font-size: 40px;
+    font-size: 20px;
   }
 
   .socials-button {
     width: 20vw;
-    height: 5vh;
+    height: 2vh;
+    line-height: 2vh;
     border-radius: 10px;
     border: 1px solid black;
     background-color: views.$primary-color;
     transition: 0.5s;
     margin-top: 2vh;
     margin-bottom: 2vh;
+    text-decoration: none;
 
     &:hover {
       box-shadow: 0 0 30px rgba(151, 151, 151);
-      height: 5vh;
+      height: 3vh;
+      line-height: 3vh;
       transition: 0.5s;
     }
   }
