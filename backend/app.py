@@ -11,6 +11,7 @@ from flask_mail import Mail
 from about.about import AboutDB
 from user.static import ResponseSuccess, ResponseFailure
 from user.user import UserDB
+from join.join import JoinDB
 
 load_dotenv()
 app = Flask(__name__)
@@ -88,6 +89,7 @@ def logout():
 
 
 @app.route('/about/create', methods=['POST'])
+@cross_origin()
 def create_about():
     name = json.loads(request.data)['name']
     social_1 = json.loads(request.data)['social_1']
@@ -100,6 +102,20 @@ def create_about():
     response = {"message": "successfully created",
                 "data": {"user_name": about.name, "social_1": about.social_1, "social_2": about.social_2,
                          "social_3": about.social_3, "photo": about.photo_link}}
+    return jsonify(response), 201
+
+
+@app.route('/join', methods=['POST'])
+@cross_origin()
+def join_request():
+    name = json.loads(request.data)['name']
+    email = json.loads(request.data)['email']
+    link = json.loads(request.data)['link']
+
+    join = JoinDB().add_join_request(name, email, link)
+
+    response = {"message": "successfully created",
+                "data": {"name": join.name, "email": join.email, "photo": join.link}}
     return jsonify(response), 201
 
 

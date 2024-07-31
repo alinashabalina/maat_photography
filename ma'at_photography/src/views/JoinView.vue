@@ -1,53 +1,58 @@
 <script lang="ts" setup>
-import axios from 'axios';
 import {ref} from 'vue'
 import HeaderComponent from "@/components/HeaderComponent.vue";
 
 const email = ref('')
 const social = ref('')
 const name = ref('')
-const isDisabled = ref(true)
+const isDisabled = ref(false)
+const modalData = ref('')
+const isShown = ref(true)
 
-async function submitForm(event: any) {
-  const body = {email: email.value, password: password.value};
-  console.log(body);
-  isDisabled.value = true;
-  if (body.email.length === 0 || body.password.length === 0) {
-    isDisabled.value
-  } else {
-    isDisabled.value = false;
-  }
-  try {
-    event.preventDefault();
-    const response = await axios.post("https://reqres.in/api/articles", body);
-    email.value = '';
-    password.value = '';
-    console.log(response)
-  } catch (error) {
-    console.error(error);
-  }
+function submitForm(event: any): any {
+  event.preventDefault();
+  fetch("http://127.0.0.1:5000/join",
+      {
+        method: "POST", body: JSON.stringify({email: email.value, name: name.value, link: social.value})
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        modalData.value = data["message"];
+        return modalData
+      })
+      .catch((error) => {
+        modalData.value = "Oops something went wrong. Try again later";
+        return modalData
+      })
+  email.value = '';
+  name.value = '';
+  social.value = '';
+  isShown.value = !isShown.value;
 }
 </script>
 
 <template>
   <HeaderComponent class="head"/>
-  <div class="header">Join us</div>
-  <form class="form-wrapper">
-    <div class="email-wrapper">
-      <div class="input-label">Enter your email</div>
-      <input v-model="email" class="input-field input-field__email" type="email"/>
-    </div>
-    <div class="email-wrapper">
-      <div class="input-label">Enter your name</div>
-      <input v-model="name" class="input-field input-field__email" type="text"/>
-    </div>
-    <div class="email-wrapper">
-      <div class="input-label">Enter your project link</div>
-      <input v-model="social" class="input-field input-field__email" type="text"/>
-    </div>
-    <input :disabled="isDisabled" class="input-submit form-btn button-item"
-           type="submit" value="sign in" @click="submitForm"/>
-  </form>
+  <div v-show="isShown">
+    <div class="header">Join us</div>
+    <form class="form-wrapper">
+      <div class="email-wrapper">
+        <div class="input-label">Enter your email</div>
+        <input v-model="email" class="input-field input-field__email" type="email"/>
+      </div>
+      <div class="email-wrapper">
+        <div class="input-label">Enter your name</div>
+        <input v-model="name" class="input-field input-field__email" type="text"/>
+      </div>
+      <div class="email-wrapper">
+        <div class="input-label">Enter your project link</div>
+        <input v-model="social" class="input-field input-field__email" type="text"/>
+      </div>
+      <input :disabled="isDisabled" class="input-submit form-btn button-item"
+             type="submit" value="sign in" @click="submitForm"/>
+    </form>
+  </div>
+  <div v-show="!isShown" class="form-wrapper_info"> {{ modalData }}</div>
 </template>
 
 <style lang="scss" scoped>
@@ -67,6 +72,15 @@ async function submitForm(event: any) {
     margin-left: auto;
     margin-right: auto;
     border-radius: 10px;
+
+    &_info {
+      margin-top: 10vh;
+      height: 30vh;
+      text-align: center;
+      line-height: 40vh;
+      font-family: views.$primary-font;
+      font-size: 12px;
+    }
   }
 
   .email-wrapper {
@@ -116,6 +130,15 @@ async function submitForm(event: any) {
     height: 20vh;
     margin-left: auto;
     margin-right: auto;
+
+    &_info {
+      margin-top: 10vh;
+      height: 30vh;
+      text-align: center;
+      line-height: 40vh;
+      font-family: views.$primary-font;
+      font-size: 30px;
+    }
   }
 
   .email-wrapper {
@@ -166,6 +189,10 @@ async function submitForm(event: any) {
     height: 250px;
     margin-left: auto;
     margin-right: auto;
+
+    &_info {
+      text-align: center;
+    }
   }
 
   .email-wrapper {
