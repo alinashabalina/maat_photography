@@ -6,9 +6,10 @@ from flask import Flask, jsonify, request
 from flask_bcrypt import check_password_hash, generate_password_hash
 from flask_cors import CORS, cross_origin
 from flask_login import LoginManager, current_user, login_user, logout_user, login_required
-from flask_mail import Mail
+from flask_mail import Mail, Message
 
 from about.about import AboutDB
+from join.static import Letters
 from user.static import ResponseSuccess, ResponseFailure
 from user.user import UserDB
 from join.join import JoinDB
@@ -17,6 +18,12 @@ load_dotenv()
 app = Flask(__name__)
 login_manager = LoginManager()
 app.secret_key = os.getenv('FLASK_SECRET_KEY')
+app.config['MAIL_SERVER'] = "smtp.gmail.com"
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = os.getenv('EMAIL')
+app.config['MAIL_PASSWORD'] = os.getenv('EMAIL_PASSWORD')
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
 login_manager.init_app(app)
 CORS(app)
 mail = Mail(app)
@@ -98,11 +105,14 @@ def create_about():
     photo_link = json.loads(request.data)['photo_link']
 
     about = AboutDB().add_about_user(name, social_1, social_2, social_3, photo_link)
-
-    response = {"message": "successfully created",
-                "data": {"user_name": about.name, "social_1": about.social_1, "social_2": about.social_2,
-                         "social_3": about.social_3, "photo": about.photo_link}}
-    return jsonify(response), 201
+    if about:
+        response = {"message": "successfully created",
+                    "data": {"user_name": about.name, "social_1": about.social_1, "social_2": about.social_2,
+                             "social_3": about.social_3, "photo": about.photo_link}}
+        return jsonify(response), 201
+    else:
+        response = ResponseFailure.info_not_created
+        return jsonify(response), 400
 
 
 @app.route('/join', methods=['POST'])
@@ -113,10 +123,14 @@ def join_request():
     link = json.loads(request.data)['link']
 
     join = JoinDB().add_join_request(name, email, link)
-
-    response = {"message": "successfully created",
-                "data": {"name": join.name, "email": join.email, "photo": join.link}}
-    return jsonify(response), 201
+    if join:
+        response = {"message": "We have received your data. You will receive a letter from our team",
+                    "data": {"name": join.name, "email": join.email, "photo": join.link}}
+        send_mail(Letters.subject_join, "zine.maat@gmail.com", [join.email], Letters.message_body_join)
+        return jsonify(response), 201
+    else:
+        response = ResponseFailure.info_not_created
+        return jsonify(response), 400
 
 
 @app.route('/about', methods=['GET'])
@@ -124,11 +138,7 @@ def about_page():
     items = []
     data = AboutDB().select_all_abouts()
     for el in data:
-        item = {}
-        item["id"] = el.id
-        item["name"] = el.name
-        item["photo_link"] = el.photo_link
-        item["socials"] = []
+        item = {"id": el.id, "name": el.name, "photo_link": el.photo_link, "socials": []}
         for i in [el.social_1, el.social_2, el.social_3]:
             if i != "":
                 item["socials"].append(i)
@@ -136,3 +146,11 @@ def about_page():
 
     response = {"message": items}
     return jsonify(response), 200
+
+
+@app.route("/mail")
+def send_mail(subject, sender, recipients, message):
+    msg = Message(subject=subject, sender=sender, recipients=recipients)
+    msg.body = message
+    mail.send(msg)
+    return 'Sent'

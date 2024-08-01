@@ -9,3 +9,4 @@ class ResponseFailure:
     response_not_logged_in = {"message": "You are not logged in"}
     response_incorrect_data = {"message": "Either your email or your password are incorrect. Please try again"}
     response_not_registered = {"message": "You are not registered. Please try again later"}
+    info_not_created = {"message": "Info not added. Please try again later"}
