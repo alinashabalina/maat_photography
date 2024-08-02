@@ -21,7 +21,7 @@ class User(UserMixin):
 
 class UserInfo(UserMixin):
     def __init__(self, user_id, orders, favorites, reads):
-        self.id = user_id
+        self.user_id = user_id
         self.orders = orders
         self.reads = reads
         self.favorites = favorites
@@ -89,7 +89,7 @@ class UserInfoDB(DataBase):
     integer
 , orders integer array
 , reads integer array, favorites integer array, CONSTRAINT user_id
-      FOREIGN KEY(id) 
+      FOREIGN KEY(user_id) 
         REFERENCES users(id))''')
         self.conn.commit()
 
@@ -106,5 +106,5 @@ class UserInfoDB(DataBase):
     def user_info(self, user_id):
         self.cur.execute(f"SELECT * FROM infos WHERE infos.user_id = '{user_id}'")
         data = self.cur.fetchone()
-        info = UserInfo(data[0], data[1], data[2], data[3])
+        info = UserInfo(data[1], data[2], data[3], data[4])
         return info

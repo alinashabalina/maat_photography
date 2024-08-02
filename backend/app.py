@@ -150,6 +150,27 @@ def about_page():
     return jsonify(response), 200
 
 
+@app.route('/user/<user_id>', methods=['GET'])
+def user_info(user_id):
+    try:
+        user = UserInfoDB().user_info(user_id=user_id)
+        if user:
+            response = {"message": "User found", "user_info": {
+                "user_id": user.user_id,
+                "user_reads": user.reads,
+                "user_orders": user.orders,
+                "user_favorites": user.favorites
+            }}
+            return jsonify(response), 200
+        else:
+            response = {"message": f"User with id {user_id} not found"}
+            return jsonify(response), 400
+    except Exception:
+        response = {"message": "Try again later"}
+        return jsonify(response), 400
+
+
+
 @app.route("/mail")
 def send_mail(subject, sender, recipients, message):
     msg = Message(subject=subject, sender=sender, recipients=recipients)
