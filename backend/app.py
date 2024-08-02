@@ -9,10 +9,10 @@ from flask_login import LoginManager, current_user, login_user, logout_user, log
 from flask_mail import Mail, Message
 
 from about.about import AboutDB
+from join.join import JoinDB
 from join.static import Letters
 from user.static import ResponseSuccess, ResponseFailure
-from user.user import UserDB
-from join.join import JoinDB
+from user.user import UserDB, UserInfoDB
 
 load_dotenv()
 app = Flask(__name__)
@@ -47,8 +47,10 @@ def register():
             password_hash = generate_password_hash(password, 10).decode('utf8')
             user = UserDB().add_user(email, password_hash)
             if user:
-                response = ResponseSuccess.response_registered
-                return jsonify(response), 201
+                info = UserInfoDB().add_user_info(user_id=user.id, orders=[], favorites=[], reads=[])
+                if info:
+                    response = ResponseSuccess.response_registered
+                    return jsonify(response), 201
             else:
                 response = ResponseFailure.response_not_registered
                 return jsonify(response), 400

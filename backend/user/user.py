@@ -19,6 +19,14 @@ class User(UserMixin):
         self.is_admin = is_admin
 
 
+class UserInfo(UserMixin):
+    def __init__(self, user_id, orders, favorites, reads):
+        self.id = user_id
+        self.orders = orders
+        self.reads = reads
+        self.favorites = favorites
+
+
 class UserDB(DataBase):
 
     def __init__(self):
@@ -49,7 +57,9 @@ class UserDB(DataBase):
                           email, password, False))
         self.conn.commit()
         self.cur.execute(f"SELECT * FROM users WHERE users.email = '{email}'")
-        return self.cur.fetchone()
+        data = self.cur.fetchone()
+        user = User(data[0], data[1], data[2], data[3], data[4])
+        return user
 
     def find_user(self, email):
         self.cur.execute(f"SELECT * FROM users WHERE users.email = '{email}'")
@@ -62,3 +72,39 @@ class UserDB(DataBase):
         data = self.cur.fetchone()
         user = User(data[0], data[1], data[2], data[3], data[4])
         return user
+
+
+class UserInfoDB(DataBase):
+
+    def __init__(self):
+        super().__init__()
+        self.cur.execute(
+            '''CREATE TABLE IF NOT EXISTS infos
+(
+    id
+    serial \
+    PRIMARY
+    KEY,
+    user_id
+    integer
+, orders integer array
+, reads integer array, favorites integer array, CONSTRAINT user_id
+      FOREIGN KEY(id) 
+        REFERENCES users(id))''')
+        self.conn.commit()
+
+    def add_user_info(self, user_id, orders, favorites, reads):
+        self.cur.execute('INSERT INTO infos (user_id, orders, favorites, reads)'
+                         'VALUES (%s, %s, %s, %s)',
+                         (user_id, orders, favorites, reads))
+        self.conn.commit()
+        self.cur.execute(f"SELECT * FROM infos WHERE infos.user_id = '{user_id}'")
+        data = self.cur.fetchone()
+        info = UserInfo(data[0], data[1], data[2], data[3])
+        return info
+
+    def user_info(self, user_id):
+        self.cur.execute(f"SELECT * FROM infos WHERE infos.user_id = '{user_id}'")
+        data = self.cur.fetchone()
+        info = UserInfo(data[0], data[1], data[2], data[3])
+        return info
