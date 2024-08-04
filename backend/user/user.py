@@ -20,7 +20,7 @@ class User(UserMixin):
 
 
 class UserInfo(UserMixin):
-    def __init__(self, user_id, orders, favorites, reads):
+    def __init__(self, user_id, orders, reads, favorites):
         self.user_id = user_id
         self.orders = orders
         self.reads = reads

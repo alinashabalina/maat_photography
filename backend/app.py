@@ -170,7 +170,6 @@ def user_info(user_id):
         return jsonify(response), 400
 
 
-
 @app.route("/mail")
 def send_mail(subject, sender, recipients, message):
     msg = Message(subject=subject, sender=sender, recipients=recipients)
