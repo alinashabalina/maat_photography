@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {onBeforeMount, onMounted, ref} from "vue"
+import {ref} from "vue"
 import HeaderComponent from "@/components/HeaderComponent.vue";
 import PACardComponent from "@/components/PACardComponent.vue";
 import { UserStore } from '@/stores/UserStore'
