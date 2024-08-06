@@ -9,7 +9,7 @@ const isDisabled = ref(false)
 const modalData = ref('')
 const isShown = ref(true)
 
-function submitForm(event: any): any {
+function submitForm(event: Event): any {
   event.preventDefault();
   fetch("http://127.0.0.1:5000/join",
       {
@@ -49,7 +49,7 @@ function submitForm(event: any): any {
         <input v-model="social" class="input-field input-field__email" type="text"/>
       </div>
       <input :disabled="isDisabled" class="input-submit form-btn button-item"
-             type="submit" value="sign in" @click="submitForm"/>
+             type="submit" value="join us" @click="submitForm"/>
     </form>
   </div>
   <div v-show="!isShown" class="form-wrapper_info"> {{ modalData }}</div>

@@ -13,6 +13,7 @@ from join.join import JoinDB
 from join.static import Letters
 from user.static import ResponseSuccess, ResponseFailure
 from user.user import UserDB, UserInfoDB
+from photos.photo import PhotoDB
 
 load_dotenv()
 app = Flask(__name__)
@@ -176,3 +177,32 @@ def send_mail(subject, sender, recipients, message):
     msg.body = message
     mail.send(msg)
     return 'Sent'
+
+
+@app.route('/photo/create', methods=['POST'])
+@cross_origin()
+def create_photo():
+    try:
+        link = json.loads(request.data)['link']
+        photo = PhotoDB().add_new_photo(link)
+        if photo:
+            response = {"message": "Photo successfully added"}
+            return jsonify(response), 201
+    except KeyError as err:
+        response = {"message": f"Photo not added, {err.args[0]} is missing"}
+        return jsonify(response), 400
+
+
+@app.route('/restore', methods=['POST'])
+@cross_origin()
+def restore_password():
+    try:
+        email = json.loads(request.data)['email']
+        user = UserDB().find_user(email=email)
+        if user:
+            send_mail()
+            response = {"message": "You'll receive a link via email"}
+            return jsonify(response), 200
+    except KeyError as err:
+        response = {"message": f"Link not sent, {err.args[0]} is missing"}
+        return jsonify(response), 400
