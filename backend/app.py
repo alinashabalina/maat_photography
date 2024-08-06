@@ -9,6 +9,7 @@ from flask_login import LoginManager, current_user, login_user, logout_user, log
 from flask_mail import Mail, Message
 
 from about.about import AboutDB
+from issue.issue import IssueDB
 from join.join import JoinDB
 from join.static import Letters
 from user.static import ResponseSuccess, ResponseFailure
@@ -205,4 +206,17 @@ def restore_password():
             return jsonify(response), 200
     except KeyError as err:
         response = {"message": f"Link not sent, {err.args[0]} is missing"}
+        return jsonify(response), 400
+
+
+@app.route('/issues', methods=['POST'])
+@cross_origin()
+def select_all_issues():
+    try:
+        count = IssueDB().select_issue_count()
+        issues = IssueDB().select_all_issues()
+        response = {"message": "Ok", "count": count[0], "issues": issues}
+        return jsonify(response), 200
+    except Exception:
+        response = {"message": "Ooops! Something went wrong"}
         return jsonify(response), 400

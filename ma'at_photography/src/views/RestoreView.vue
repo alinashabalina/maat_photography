@@ -18,7 +18,6 @@ function restorePassword(event: Event): Ref<string> {
         modalData.value = "Oops something went wrong. Try again later";
       })
   email.value = '';
-  console.log(modalData.value)
   return modalData
 }
 </script>
