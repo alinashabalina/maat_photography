@@ -2,7 +2,7 @@ import psycopg2
 
 
 class DataBase:
-    database = "maat_user"
+    database = "postgres"
     user = "postgres"
     password = "postgres"
     host = "localhost"
