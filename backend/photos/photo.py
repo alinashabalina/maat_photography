@@ -1,4 +1,4 @@
-from database.init_db import DataBase
+from backend.init_db import DataBase
 
 class Photo:
     def __init__(self, photo_id, link):

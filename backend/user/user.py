@@ -1,7 +1,6 @@
 from flask_login import LoginManager, UserMixin
 
-from database.init_db import DataBase
-
+from backend.init_db import DataBase
 login_manager = LoginManager()
 
 
@@ -58,6 +57,7 @@ class UserDB(DataBase):
         self.conn.commit()
         self.cur.execute(f"SELECT * FROM users WHERE users.email = '{email}'")
         data = self.cur.fetchone()
+        print(data)
         user = User(data[0], data[1], data[2], data[3], data[4])
         return user
 
@@ -108,3 +108,4 @@ class UserInfoDB(DataBase):
         data = self.cur.fetchone()
         info = UserInfo(data[1], data[2], data[3], data[4])
         return info
+

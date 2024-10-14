@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
-export const AboutStore  = defineStore('about', {
+export const AboutStore:any  = defineStore('about', {
     state: () => ({
-       abouts : []
+       abouts: []
     }),
     getters: {
         allAbouts(state) {
@@ -9,17 +9,17 @@ export const AboutStore  = defineStore('about', {
             return state.abouts
         },
         getSocialsById: (state) => {
-            return (user_id) => state.abouts[0].find((el) => el.id === user_id).socials;
+            return (user_id: number) => state.abouts[0].find((el: dict) => el.id === user_id).socials;
         },
         getPicById: (state) => {
-            return (user_id) => state.abouts[0].find((el) => el.id === user_id).photo_link;
+            return (user_id: number ) => state.abouts[0].find((el: dict) => el.id === user_id).photo_link;
         }
     },
     actions: {
-            getallAbouts() {
+            getallAbouts(): Promise<number> {
                 return fetch('http://127.0.0.1:5000/about')
                     .then((response) => response.json())
-                    .then((data) => this.abouts.push(data["message"]))
+                    .then((data: JSON) => this.abouts.push(data["message"]))
             },
         },
 })

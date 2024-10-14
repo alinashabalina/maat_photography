@@ -3,18 +3,18 @@ import os
 
 from dotenv import load_dotenv
 from flask import Flask, jsonify, request
-from flask_bcrypt import check_password_hash, generate_password_hash
 from flask_cors import CORS, cross_origin
 from flask_login import LoginManager, current_user, login_user, logout_user, login_required
 from flask_mail import Mail, Message
+from flask_bcrypt import Bcrypt
 
-from about.about import AboutDB
-from issue.issue import IssueDB
-from join.join import JoinDB
-from join.static import Letters
-from user.static import ResponseSuccess, ResponseFailure
-from user.user import UserDB, UserInfoDB
-from photos.photo import PhotoDB
+from backend.about.about import AboutDB
+from backend.issue.issue import IssueDB
+from backend.join.join import JoinDB
+from backend.join.static import Letters
+from backend.user.static import ResponseSuccess, ResponseFailure
+from backend.user.user import UserDB, UserInfoDB
+from backend.photos.photo import PhotoDB
 
 load_dotenv()
 app = Flask(__name__)
@@ -27,37 +27,30 @@ app.config['MAIL_PASSWORD'] = os.getenv('EMAIL_PASSWORD')
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 login_manager.init_app(app)
+bcrypt = Bcrypt(app)
 CORS(app)
 mail = Mail(app)
 
 
 @login_manager.user_loader
-def load_user(user_id):
+def load_user(user_id: int):
     return UserDB().find_user_by_id(int(user_id))
 
 
 @app.route("/register", methods=["POST"])
 @cross_origin()
 def register():
-    try:
-        if current_user.is_authenticated:
-            response = ResponseSuccess.response_already_logged_in
-            return jsonify(response), 400
-        else:
-            password = json.loads(request.data)['password']
-            email = json.loads(request.data)['email']
-            password_hash = generate_password_hash(password, 10).decode('utf8')
-            user = UserDB().add_user(email, password_hash)
-            if user:
-                info = UserInfoDB().add_user_info(user_id=user.id, orders=[], favorites=[], reads=[])
-                if info:
-                    response = ResponseSuccess.response_registered
-                    return jsonify(response), 201
-            else:
-                response = ResponseFailure.response_not_registered
-                return jsonify(response), 400
-    except Exception:
-        response = {"message": "Try to use another email or password"}
+    password = json.loads(request.data)['password']
+    email = json.loads(request.data)['email']
+    hashed = bcrypt.generate_password_hash(password).decode('utf8')
+    user = UserDB().add_user(email, hashed)
+    if user:
+        info = UserInfoDB().add_user_info(user_id=user.id, orders=[], favorites=[], reads=[])
+        if info:
+            response = ResponseSuccess.response_registered
+            return jsonify(response), 201
+    else:
+        response = ResponseFailure.response_not_registered
         return jsonify(response), 400
 
 
@@ -71,15 +64,12 @@ def login():
             password = json.loads(request.data)['password']
             email = json.loads(request.data)['email']
             user = UserDB().find_user(email)
-            if user and check_password_hash(user.password_hash, password):
-                if login_user(user):
-                    response = ResponseSuccess.response_logged_in
-                    return jsonify(response), 200
-                else:
-                    response = ResponseFailure.response_not_logged_in
-                    return jsonify(response), 400
+            if user and bcrypt.check_password_hash(user.password_hash, password):
+                login_user(user, remember=True)
+                response = {"user": "Successfully logged"}
+                return jsonify(response), 200
             else:
-                response = ResponseFailure.response_incorrect_data
+                response = ResponseFailure.response_not_logged_in
                 return jsonify(response), 400
 
     except Exception as e:
@@ -153,7 +143,8 @@ def about_page():
 
 
 @app.route('/user/<user_id>', methods=['GET'])
-def user_info(user_id):
+@login_required
+def user_info(user_id: int):
     try:
         user = UserInfoDB().user_info(user_id=user_id)
         if user:
@@ -216,6 +207,18 @@ def select_all_issues():
         count = IssueDB().select_issue_count()
         issues = IssueDB().select_all_issues()
         response = {"message": "Ok", "count": count[0], "issues": issues}
+        return jsonify(response), 200
+    except Exception:
+        response = {"message": "Ooops! Something went wrong"}
+        return jsonify(response), 400
+
+
+@app.route('/fav', methods=['POST'])
+@cross_origin()
+def add_to_favs():
+    try:
+        print(current_user.id)
+        response = {"message": "Ok"}
         return jsonify(response), 200
     except Exception:
         response = {"message": "Ooops! Something went wrong"}

@@ -1,5 +1,4 @@
-from database.init_db import DataBase
-
+from backend.init_db import DataBase
 
 class Join:
     def __init__(self, join_id, name, email, link):
