@@ -215,11 +215,19 @@ def select_all_issues():
 
 @app.route('/fav', methods=['POST'])
 @cross_origin()
+@login_required
 def add_to_favs():
-    try:
-        print(current_user.id)
-        response = {"message": "Ok"}
-        return jsonify(response), 200
-    except Exception:
-        response = {"message": "Ooops! Something went wrong"}
-        return jsonify(response), 400
+        pic_id = json.loads(request.data)['pic_id']
+        UserInfoDB().update_favs(current_user.id, pic_id)
+        response = {}
+        return jsonify(response), 204
+
+
+@app.route('/reads', methods=['POST'])
+@cross_origin()
+@login_required
+def add_to_reads():
+        article_id = json.loads(request.data)['article_id']
+        UserInfoDB().update_reads(current_user.id, article_id)
+        response = {}
+        return jsonify(response), 204
