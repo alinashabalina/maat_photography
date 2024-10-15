@@ -1,25 +1,26 @@
 import { defineStore } from 'pinia'
+import { mande } from 'mande'
+
+const abouts = mande("http://127.0.0.1:5000/about")
 export const AboutStore:any  = defineStore('about', {
     state: () => ({
-       abouts: []
+       abouts: [] as Abouts[],
     }),
-    getters: {
-        allAbouts(state) {
-            this.getallAbouts()
-            return state.abouts
-        },
-        getSocialsById: (state) => {
-            return (user_id: number) => state.abouts[0].find((el: dict) => el.id === user_id).socials;
-        },
-        getPicById: (state) => {
-            return (user_id: number ) => state.abouts[0].find((el: dict) => el.id === user_id).photo_link;
-        }
-    },
     actions: {
-            getallAbouts(): Promise<number> {
-                return fetch('http://127.0.0.1:5000/about')
-                    .then((response) => response.json())
-                    .then((data: JSON) => this.abouts.push(data["message"]))
-            },
+        async getallAbouts() {
+            try {
+                await abouts.get()
+                    .then((data: any) => {this.abouts.push(data["message"]);return this.abouts})}
+            catch (error) {
+                return error
+            }
         },
+    },
 })
+
+interface Abouts {
+    id: number,
+    name: String,
+    social: String,
+    photo_link: String,
+}

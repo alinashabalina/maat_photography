@@ -1,24 +1,15 @@
 <script lang="ts" setup>
-import ArticleComponent from "@/components/ArticleComponent.vue";
 import HeaderComponent from "@/components/HeaderComponent.vue";
 import MinorPhotoComponent from "@/components/MinorPhotoComponent.vue";
-const text = "lala"
 </script>
 
 <template>
   <HeaderComponent/>
   <div class="wrapper">
     <div class="wrapper-light">
-      <div class="header">Issue {{ $route.params.id }}</div>
-      <div class="wrapper__light">
-        <ArticleComponent :text="text"/>
-      </div>
+      <div class="header"><img src="@/assets/ISSUE 1.png"></div>
     </div>
-    <div class="wrapper__dark">
-      <router-link :to="`/issue/${$route.params.id}/article`"><MinorPhotoComponent class="small-pic"/></router-link>
-      <router-link :to="`/issue/${$route.params.id}/gallery`"><MinorPhotoComponent class="small-pic"/></router-link>
-      <router-link :to="`/issue/${$route.params.id}/gallery`"><MinorPhotoComponent class="small-pic"/></router-link>
-    </div>
+      <router-link :to="`/issue/${$route.params.id}/article/1`"><MinorPhotoComponent class="small-pic"/></router-link>
   </div>
 
 </template>
@@ -61,7 +52,7 @@ const text = "lala"
   }
 
   .small-pic {
-    width: 34vw;
+    width: 20vw;
     height: 30vh;
     margin-left: 2vw;
     border-radius: 10px;
@@ -101,7 +92,7 @@ const text = "lala"
   }
 
   .small-pic {
-    width: 34vw;
+    width: 20vw;
     height: 30vh;
     margin-left: 2vw;
     border-radius: 20px;
@@ -143,13 +134,12 @@ const text = "lala"
   }
 
   .small-pic {
-    width: 35vw;
-    height: 30vh;
+    width: 20vw;
+    height: 50vh;
     margin-left: 1vw;
     border-radius: 20px;
   }
 
 }
-
 
 </style>

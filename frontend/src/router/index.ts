@@ -6,7 +6,6 @@ import JoinView from "../views/JoinView.vue";
 import GalleryView from "../views/GalleryView.vue";
 import IssueView from "../views/IssueView.vue";
 import IssueMainArticleView from "../views/IssueMainArticleView.vue";
-import IssueGalleryView from "../views/IssueGalleryView.vue";
 import SignUpView from "@/views/SignUpView.vue";
 import PersonalAreaView from "@/views/PersonalAreaView.vue";
 
@@ -57,10 +56,6 @@ const router = createRouter({
             name: "article",
             component: IssueMainArticleView,
         },
-        {
-            path: '/issue/:id/gallery',
-            component: IssueGalleryView,
-        }
     ]
 })
 

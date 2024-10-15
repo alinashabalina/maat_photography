@@ -12,6 +12,7 @@ from backend.about.about import AboutDB
 from backend.issue.issue import IssueDB
 from backend.join.join import JoinDB
 from backend.join.static import Letters
+from backend.texts.texts import TextDB
 from backend.user.static import ResponseSuccess, ResponseFailure
 from backend.user.user import UserDB, UserInfoDB
 from backend.photos.photo import PhotoDB
@@ -40,17 +41,21 @@ def load_user(user_id: int):
 @app.route("/register", methods=["POST"])
 @cross_origin()
 def register():
-    password = json.loads(request.data)['password']
-    email = json.loads(request.data)['email']
-    hashed = bcrypt.generate_password_hash(password).decode('utf8')
-    user = UserDB().add_user(email, hashed)
-    if user:
-        info = UserInfoDB().add_user_info(user_id=user.id, orders=[], favorites=[], reads=[])
-        if info:
-            response = ResponseSuccess.response_registered
-            return jsonify(response), 201
-    else:
-        response = ResponseFailure.response_not_registered
+    try:
+        password = json.loads(request.data)['password']
+        email = json.loads(request.data)['email']
+        hashed = bcrypt.generate_password_hash(password).decode('utf8')
+        user = UserDB().add_user(email, hashed)
+        if user:
+            info = UserInfoDB().add_user_info(user_id=user.id, orders=[], favorites=[], reads=[])
+            if info:
+                response = ResponseSuccess.response_registered
+                return jsonify(response), 201
+        else:
+            response = ResponseFailure.response_not_registered
+            return jsonify(response), 400
+    except Exception as e:
+        response = {"message": e.args}
         return jsonify(response), 400
 
 
@@ -92,54 +97,61 @@ def logout():
 @app.route('/about/create', methods=['POST'])
 @cross_origin()
 def create_about():
-    name = json.loads(request.data)['name']
-    social_1 = json.loads(request.data)['social_1']
-    social_2 = json.loads(request.data)['social_2']
-    social_3 = json.loads(request.data)['social_3']
-    photo_link = json.loads(request.data)['photo_link']
+    try:
+        name = json.loads(request.data)['name']
+        social = json.loads(request.data)['social']
+        photo_link = json.loads(request.data)['photo_link']
 
-    about = AboutDB().add_about_user(name, social_1, social_2, social_3, photo_link)
-    if about:
-        response = {"message": "successfully created",
-                    "data": {"user_name": about.name, "social_1": about.social_1, "social_2": about.social_2,
-                             "social_3": about.social_3, "photo": about.photo_link}}
-        return jsonify(response), 201
-    else:
-        response = ResponseFailure.info_not_created
+        about = AboutDB().add_about_user(name, social, photo_link)
+        if about:
+            response = {"message": "successfully created",
+                        "data": {"user_name": about.name, "social": about.social, "photo": about.photo_link}}
+            return jsonify(response), 201
+        else:
+            response = ResponseFailure.info_not_created
+            return jsonify(response), 400
+    except Exception as e:
+        response = {"message": e.args}
         return jsonify(response), 400
 
 
 @app.route('/join', methods=['POST'])
 @cross_origin()
 def join_request():
-    name = json.loads(request.data)['name']
-    email = json.loads(request.data)['email']
-    link = json.loads(request.data)['link']
+    try:
+        name = json.loads(request.data)['name']
+        email = json.loads(request.data)['email']
+        link = json.loads(request.data)['link']
 
-    join = JoinDB().add_join_request(name, email, link)
-    if join:
-        response = {"message": "We have received your data. You will receive a letter from our team",
-                    "data": {"name": join.name, "email": join.email, "photo": join.link}}
-        send_mail(Letters.subject_join, "zine.maat@gmail.com", [join.email], Letters.message_body_join)
-        return jsonify(response), 201
-    else:
-        response = ResponseFailure.info_not_created
+        join = JoinDB().add_join_request(name, email, link)
+        if join:
+            response = {"message": "We have received your data. You will receive a letter from our team",
+                        "data": {"name": join.name, "email": join.email, "photo": join.link}}
+            send_mail(Letters.subject_join, "zine.maat@gmail.com", [join.email], Letters.message_body_join)
+            return jsonify(response), 201
+        else:
+            response = ResponseFailure.info_not_created
+            return jsonify(response), 400
+    except Exception as e:
+        response = {"message": e.args}
         return jsonify(response), 400
 
 
 @app.route('/about', methods=['GET'])
+@cross_origin()
 def about_page():
-    items = []
-    data = AboutDB().select_all_abouts()
-    for el in data:
-        item = {"id": el.id, "name": el.name, "photo_link": el.photo_link, "socials": []}
-        for i in [el.social_1, el.social_2, el.social_3]:
-            if i != "":
-                item["socials"].append(i)
-        items.append(item)
+    try:
+        items = []
+        data = AboutDB().select_all_abouts()
+        for el in data:
+            item = {"id": el.id, "name": el.name, "photo_link": el.photo_link, "social": el.social}
+            items.append(item)
 
-    response = {"message": items}
-    return jsonify(response), 200
+        response = {"message": items}
+        return jsonify(response), 200
+    except Exception as e:
+        response = {"message": e.args}
+        return jsonify(response), 400
 
 
 @app.route('/user/<user_id>', methods=['GET'])
@@ -158,17 +170,21 @@ def user_info(user_id: int):
         else:
             response = {"message": f"User with id {user_id} not found"}
             return jsonify(response), 400
-    except Exception:
-        response = {"message": "Try again later"}
-        return jsonify(response), 400
+    except Exception as e:
+            response = {"message": e.args}
+            return jsonify(response), 400
 
 
 @app.route("/mail")
 def send_mail(subject, sender, recipients, message):
-    msg = Message(subject=subject, sender=sender, recipients=recipients)
-    msg.body = message
-    mail.send(msg)
-    return 'Sent'
+    try:
+        msg = Message(subject=subject, sender=sender, recipients=recipients)
+        msg.body = message
+        mail.send(msg)
+        return 'Sent'
+    except Exception as e:
+        response = {"message": e.args}
+        return jsonify(response), 400
 
 
 @app.route('/photo/create', methods=['POST'])
@@ -208,18 +224,64 @@ def select_all_issues():
         issues = IssueDB().select_all_issues()
         response = {"message": "Ok", "count": count[0], "issues": issues}
         return jsonify(response), 200
-    except Exception:
-        response = {"message": "Ooops! Something went wrong"}
+    except Exception as e:
+        response = {"message": e.args}
         return jsonify(response), 400
 
 
 @app.route('/fav', methods=['POST'])
 @cross_origin()
+@login_required
 def add_to_favs():
     try:
-        print(current_user.id)
-        response = {"message": "Ok"}
-        return jsonify(response), 200
-    except Exception:
-        response = {"message": "Ooops! Something went wrong"}
+        pic_id = json.loads(request.data)['pic_id']
+        UserInfoDB().update_favs(current_user.id, pic_id)
+        response = {}
+        return jsonify(response), 204
+    except Exception as e:
+        response = {"message": e.args}
+        return jsonify(response), 400
+
+
+@app.route('/reads', methods=['POST'])
+@cross_origin()
+@login_required
+def add_to_reads():
+    try:
+        article_id = json.loads(request.data)['article_id']
+        UserInfoDB().update_reads(current_user.id, article_id)
+        response = {}
+        return jsonify(response), 204
+    except Exception as e:
+        response = {"message": e.args}
+        return jsonify(response), 400
+
+
+@app.route('/text/create', methods=['POST'])
+@cross_origin()
+@login_required
+def text_create():
+    try:
+        content = json.loads(request.data)['content']
+        TextDB().add_new_text(content)
+        response = {}
+        return jsonify(response), 204
+    except Exception as e:
+        response = {"message": e.args}
+        return jsonify(response), 400
+
+
+@app.route('/issue/create', methods=['POST'])
+@cross_origin()
+@login_required
+def issue_create():
+    try:
+        name = json.loads(request.data)['name']
+        texts = json.loads(request.data)['texts']
+        pictures = json.loads(request.data)['pictures']
+        IssueDB().add_new_issue(name, pictures, texts)
+        response = {}
+        return jsonify(response), 204
+    except Exception as e:
+        response = {"message": e.args}
         return jsonify(response), 400

@@ -25,7 +25,4 @@ class PhotoDB(DataBase):
                          'VALUES (%s)',
                          (link))
         self.conn.commit()
-        self.cur.execute(f"SELECT * FROM photos WHERE photos.link = '{link}'")
-        data = self.cur.fetchone()
-        photo = Photo(data[0], data[1])
-        return photo
+

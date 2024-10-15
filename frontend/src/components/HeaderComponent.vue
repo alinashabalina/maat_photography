@@ -14,9 +14,9 @@ const showModal = ref(false)
         menu
       </div>
       <router-link :to="'/personal'" class="menu-btn">home</router-link>
-      <router-link :to="'about'" class="menu-btn">about</router-link>
-      <router-link :to="'gallery'" class="menu-btn">gallery</router-link>
-      <router-link :to="'join'" class="menu-btn">join</router-link>
+      <router-link :to="'/about'" class="menu-btn">about</router-link>
+      <router-link :to="'/gallery'" class="menu-btn">gallery</router-link>
+      <router-link :to="'/join'" class="menu-btn">join</router-link>
       <MenuButtonComponent :data="signup" class="menu-btn" @click="showModal = true"/>
       <Teleport to="body"/>
       <ModalWindow :isShown="showModal" header="explore with us" @close="showModal = false">

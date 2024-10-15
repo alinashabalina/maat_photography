@@ -57,7 +57,6 @@ class UserDB(DataBase):
         self.conn.commit()
         self.cur.execute(f"SELECT * FROM users WHERE users.email = '{email}'")
         data = self.cur.fetchone()
-        print(data)
         user = User(data[0], data[1], data[2], data[3], data[4])
         return user
 
@@ -106,6 +105,18 @@ class UserInfoDB(DataBase):
     def user_info(self, user_id):
         self.cur.execute(f"SELECT * FROM infos WHERE infos.user_id = '{user_id}'")
         data = self.cur.fetchone()
-        info = UserInfo(data[1], data[2], data[3], data[4])
+        info = UserInfo(data[1], data[2], data[3], list(set(data[4])))
         return info
+
+    def update_favs(self, user_id, pic_id):
+        self.cur.execute(f"UPDATE infos SET favorites = array_append(favorites, {pic_id}) WHERE infos.user_id = '{user_id}'")
+        self.conn.commit()
+
+    def update_reads(self, user_id, article_id):
+        self.cur.execute(f"UPDATE infos SET reads = array_append(reads, {article_id}) WHERE infos.user_id = '{user_id}'")
+        self.conn.commit()
+
+    def update_orders(self, user_id, order_id):
+        self.cur.execute(f"UPDATE infos SET orders = array_append(orders, {order_id}) WHERE infos.user_id = '{user_id}'")
+        self.conn.commit()
 

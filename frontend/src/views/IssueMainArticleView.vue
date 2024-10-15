@@ -1,16 +1,11 @@
 <script setup lang="ts">
 
 import HeaderComponent from "@/components/HeaderComponent.vue";
-import ArticleComponent from "@/components/ArticleComponent.vue";
-import ArticleTextComponent from "@/components/ArticleTextComponent.vue";
 </script>
 
 <template>
   <HeaderComponent/>
   <div class="wrapper">
-  <ArticleComponent/>
-    <ArticleTextComponent/>
-  <ArticleComponent/>
   </div>
 </template>
 

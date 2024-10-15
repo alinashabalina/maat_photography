@@ -10,7 +10,7 @@ const favs = ref([])
 const reads = ref([])
 const ords = ref([])
 const store = UserStore()
-store.getUserData(26)
+store.getUserData(1)
 const details = toRaw(store.getDetails)
 if (details !== undefined && details[0] !== undefined) {
   favs.value = details[0].user_favorites

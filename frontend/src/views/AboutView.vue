@@ -2,30 +2,19 @@
 import HeaderComponent from '@/components/HeaderComponent.vue'
 import FooterComponent from '@/components/FooterComponent.vue'
 import { AboutStore } from '@/stores/AboutStore'
-import {ref} from "vue";
+import {ref, toRaw} from "vue";
 const isHidden = ref(true)
 const store = AboutStore()
-const items = store.allAbouts
-let data: any[]
-let pic: string
-function showInfo(user_id: number): any {
-  isHidden.value = !isHidden.value
-  data = store.getSocialsById(user_id)
-  pic = store.getPicById(user_id)
-  return [data, pic]
-}
-
+store.getallAbouts()
+const items = store.abouts
+const item: any = ref(items[0])
 </script>
 
 <template>
   <HeaderComponent/>
   <div class="info-wrapper">
     <div class="autor-wrapper">
-      <img class="autor-pic" v-for="item in items[0]" :key="item.id" :src="item.photo_link" @click="showInfo(item.id)" alt="author"/>
-    </div>
-    <div v-show="!isHidden" class="socials-wrapper">
-      <img class="autor-pic__larger" :src=pic alt="author larger pic"/>
-      <a v-for="social in data" :key="social" :href="social" target="_blank" class="socials-button"> {{ social }} </a>
+      <img class="autor-pic" v-for="item in items[0]" :key="item.id" :src="item.photo_link" alt="author">
     </div>
     <div v-show="isHidden" class="socials-wrapper">
       click the userpic to see the author's socials
