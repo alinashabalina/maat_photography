@@ -23,8 +23,8 @@ class IssueDB(DataBase):
     varchar
 (
     256
-), pictures number array, 
-texts number array);
+), pictures integer array, 
+texts integer array);
 ''')
         self.conn.commit()
 
@@ -33,7 +33,7 @@ texts number array);
                          'VALUES (%s, %s, %s)',
                          (name, pictures, texts))
         self.conn.commit()
-        self.cur.execute(f"SELECT * FROM abouts WHERE issues.name = '{name}'")
+        self.cur.execute(f"SELECT * FROM issues WHERE issues.name = '{name}'")
         data = self.cur.fetchone()
         issue = Issue(data[0], data[1], data[2], data[3])
         return issue
@@ -47,6 +47,7 @@ texts number array);
     def select_all_issues(self):
         self.cur.execute("SELECT * FROM issues")
         data_many = self.cur.fetchall()
+        print(data_many)
         if len(data_many) > 0:
             returned = []
             for el in data_many:
@@ -54,5 +55,6 @@ texts number array);
                 returned.append(data)
         else:
             returned = 0
+        print(returned)
         return returned
 

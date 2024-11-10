@@ -216,7 +216,7 @@ def restore_password():
         return jsonify(response), 400
 
 
-@app.route('/issues', methods=['POST'])
+@app.route('/issues', methods=['GET'])
 @cross_origin()
 def select_all_issues():
     try:
@@ -273,7 +273,6 @@ def text_create():
 
 @app.route('/issue/create', methods=['POST'])
 @cross_origin()
-@login_required
 def issue_create():
     try:
         name = json.loads(request.data)['name']

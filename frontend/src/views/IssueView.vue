@@ -5,11 +5,11 @@ import MinorPhotoComponent from "@/components/MinorPhotoComponent.vue";
 
 <template>
   <HeaderComponent/>
-  <div class="wrapper">
+  <div class="wrapper" v-for="article in articles" :key="item.id">
     <div class="wrapper-light">
       <div class="header"><img src="@/assets/ISSUE 1.png"></div>
     </div>
-      <router-link :to="`/issue/${$route.params.id}/article/1`"><MinorPhotoComponent class="small-pic"/></router-link>
+      <router-link :to="`/issue/${$route.params.id}/article/${article.id}`"><MinorPhotoComponent class="small-pic"/></router-link>
   </div>
 
 </template>

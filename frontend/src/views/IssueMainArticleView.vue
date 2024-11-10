@@ -1,12 +1,12 @@
 <script setup lang="ts">
 
 import HeaderComponent from "@/components/HeaderComponent.vue";
+import ArticleComponent from "@/components/ArticleComponent.vue";
 </script>
 
 <template>
   <HeaderComponent/>
-  <div class="wrapper">
-  </div>
+  <ArticleComponent/>
 </template>
 
 <style scoped lang="scss">

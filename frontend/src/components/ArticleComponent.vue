@@ -1,171 +1,113 @@
-<script setup lang="ts">
-import MainPhotoComponent from "@/components/MainPhotoComponent.vue";
+<script lang="ts" setup>
 </script>
 
 <template>
-  hru
-  <div class="slider_wrapper">
-    <div class="owl-carousel owl-theme our-success owl-loaded owl-drag">
- <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-2380px, 0px, 0px); width: 8160px; transition: 0.25s;"><div class="owl-item cloned" style="width: 330px; margin-right: 10px;"><div class="item">
-
-      <img src="https://hs.mindspace.me/hs-fs/hubfs/07.jpg?width=307&amp;height=450&amp;name=07.jpg" alt="07" loading="lazy" width="307" height="450" style="max-width: 100%; height: auto;" srcset="https://hs.mindspace.me/hs-fs/hubfs/07.jpg?width=154&amp;height=225&amp;name=07.jpg 154w, https://hs.mindspace.me/hs-fs/hubfs/07.jpg?width=307&amp;height=450&amp;name=07.jpg 307w, https://hs.mindspace.me/hs-fs/hubfs/07.jpg?width=461&amp;height=675&amp;name=07.jpg 461w, https://hs.mindspace.me/hs-fs/hubfs/07.jpg?width=614&amp;height=900&amp;name=07.jpg 614w, https://hs.mindspace.me/hs-fs/hubfs/07.jpg?width=768&amp;height=1125&amp;name=07.jpg 768w, https://hs.mindspace.me/hs-fs/hubfs/07.jpg?width=921&amp;height=1350&amp;name=07.jpg 921w" sizes="(max-width: 307px) 100vw, 307px">
-
-        <div class="text">
-          <h4>Checkpoint Charlie</h4>
-          <p>Zimmerstraße 78, 10117 Berlin</p>
-        </div>
-      </div></div><div class="owl-item cloned" style="width: 330px; margin-right: 10px;"><div class="item">
-
-
-        <img src="https://hs.mindspace.me/hs-fs/hubfs/12.jpg?width=307&amp;height=450&amp;name=12.jpg" alt="12" loading="lazy" width="307" height="450" style="max-width: 100%; height: auto;" srcset="https://hs.mindspace.me/hs-fs/hubfs/12.jpg?width=154&amp;height=225&amp;name=12.jpg 154w, https://hs.mindspace.me/hs-fs/hubfs/12.jpg?width=307&amp;height=450&amp;name=12.jpg 307w, https://hs.mindspace.me/hs-fs/hubfs/12.jpg?width=461&amp;height=675&amp;name=12.jpg 461w, https://hs.mindspace.me/hs-fs/hubfs/12.jpg?width=614&amp;height=900&amp;name=12.jpg 614w, https://hs.mindspace.me/hs-fs/hubfs/12.jpg?width=768&amp;height=1125&amp;name=12.jpg 768w, https://hs.mindspace.me/hs-fs/hubfs/12.jpg?width=921&amp;height=1350&amp;name=12.jpg 921w" sizes="(max-width: 307px) 100vw, 307px">
-
-        <div class="text">
-          <h4>Friedrichstrasse</h4>
-          <p>Friedrichstrasse 68, 10117 Berlin</p>
-        </div>
-      </div></div><div class="owl-item" style="width: 330px; margin-right: 10px;"><div class="item">
-
-
-        <img src="https://hs.mindspace.me/hs-fs/hubfs/07.jpg?width=307&amp;height=450&amp;name=07.jpg" alt="07" loading="lazy" width="307" height="450" style="max-width: 100%; height: auto;" srcset="https://hs.mindspace.me/hs-fs/hubfs/07.jpg?width=154&amp;height=225&amp;name=07.jpg 154w, https://hs.mindspace.me/hs-fs/hubfs/07.jpg?width=307&amp;height=450&amp;name=07.jpg 307w, https://hs.mindspace.me/hs-fs/hubfs/07.jpg?width=461&amp;height=675&amp;name=07.jpg 461w, https://hs.mindspace.me/hs-fs/hubfs/07.jpg?width=614&amp;height=900&amp;name=07.jpg 614w, https://hs.mindspace.me/hs-fs/hubfs/07.jpg?width=768&amp;height=1125&amp;name=07.jpg 768w, https://hs.mindspace.me/hs-fs/hubfs/07.jpg?width=921&amp;height=1350&amp;name=07.jpg 921w" sizes="(max-width: 307px) 100vw, 307px">
-
-        <div class="text">
-          <h4>Checkpoint Charlie</h4>
-          <p>Zimmerstraße 78, 10117 Berlin</p>
-        </div>
-      </div></div><div class="owl-item" style="width: 330px; margin-right: 10px;"><div class="item">
-
-
-        <img src="https://hs.mindspace.me/hs-fs/hubfs/08.jpg?width=307&amp;height=450&amp;name=08.jpg" alt="08" loading="lazy" width="307" height="450" style="max-width: 100%; height: auto;" srcset="https://hs.mindspace.me/hs-fs/hubfs/08.jpg?width=154&amp;height=225&amp;name=08.jpg 154w, https://hs.mindspace.me/hs-fs/hubfs/08.jpg?width=307&amp;height=450&amp;name=08.jpg 307w, https://hs.mindspace.me/hs-fs/hubfs/08.jpg?width=461&amp;height=675&amp;name=08.jpg 461w, https://hs.mindspace.me/hs-fs/hubfs/08.jpg?width=614&amp;height=900&amp;name=08.jpg 614w, https://hs.mindspace.me/hs-fs/hubfs/08.jpg?width=768&amp;height=1125&amp;name=08.jpg 768w, https://hs.mindspace.me/hs-fs/hubfs/08.jpg?width=921&amp;height=1350&amp;name=08.jpg 921w" sizes="(max-width: 307px) 100vw, 307px">
-
-        <div class="text">
-          <h4>Kreuzberg</h4>
-          <p>Skalitzer Str. 104, 10997 Berlin</p>
-        </div>
-      </div></div><div class="owl-item" style="width: 330px; margin-right: 10px;"><div class="item">
-
-
-        <img src="https://hs.mindspace.me/hs-fs/hubfs/09.jpg?width=307&amp;height=450&amp;name=09.jpg" alt="09" loading="lazy" width="307" height="450" style="max-width: 100%; height: auto;" srcset="https://hs.mindspace.me/hs-fs/hubfs/09.jpg?width=154&amp;height=225&amp;name=09.jpg 154w, https://hs.mindspace.me/hs-fs/hubfs/09.jpg?width=307&amp;height=450&amp;name=09.jpg 307w, https://hs.mindspace.me/hs-fs/hubfs/09.jpg?width=461&amp;height=675&amp;name=09.jpg 461w, https://hs.mindspace.me/hs-fs/hubfs/09.jpg?width=614&amp;height=900&amp;name=09.jpg 614w, https://hs.mindspace.me/hs-fs/hubfs/09.jpg?width=768&amp;height=1125&amp;name=09.jpg 768w, https://hs.mindspace.me/hs-fs/hubfs/09.jpg?width=921&amp;height=1350&amp;name=09.jpg 921w" sizes="(max-width: 307px) 100vw, 307px">
-
-        <div class="text">
-          <h4>Kudamm</h4>
-          <p>Uhlandstraße 32, 10719 Berlin</p>
-        </div>
-      </div></div><div class="owl-item" style="width: 330px; margin-right: 10px;"><div class="item">
-
-
-        <img src="https://hs.mindspace.me/hs-fs/hubfs/10.jpg?width=307&amp;height=450&amp;name=10.jpg" alt="10" loading="lazy" width="307" height="450" style="max-width: 100%; height: auto;" srcset="https://hs.mindspace.me/hs-fs/hubfs/10.jpg?width=154&amp;height=225&amp;name=10.jpg 154w, https://hs.mindspace.me/hs-fs/hubfs/10.jpg?width=307&amp;height=450&amp;name=10.jpg 307w, https://hs.mindspace.me/hs-fs/hubfs/10.jpg?width=461&amp;height=675&amp;name=10.jpg 461w, https://hs.mindspace.me/hs-fs/hubfs/10.jpg?width=614&amp;height=900&amp;name=10.jpg 614w, https://hs.mindspace.me/hs-fs/hubfs/10.jpg?width=768&amp;height=1125&amp;name=10.jpg 768w, https://hs.mindspace.me/hs-fs/hubfs/10.jpg?width=921&amp;height=1350&amp;name=10.jpg 921w" sizes="(max-width: 307px) 100vw, 307px">
-
-        <div class="text">
-          <h4>Hackescher Markt</h4>
-          <p>Münzstraße 12, 10178 Berlin</p>
-        </div>
-      </div></div><div class="owl-item" style="width: 330px; margin-right: 10px;"><div class="item">
-
-
-
-
-
-
-        <img src="https://hs.mindspace.me/hs-fs/hubfs/11.jpg?width=307&amp;height=450&amp;name=11.jpg" alt="11" loading="lazy" width="307" height="450" style="max-width: 100%; height: auto;" srcset="https://hs.mindspace.me/hs-fs/hubfs/11.jpg?width=154&amp;height=225&amp;name=11.jpg 154w, https://hs.mindspace.me/hs-fs/hubfs/11.jpg?width=307&amp;height=450&amp;name=11.jpg 307w, https://hs.mindspace.me/hs-fs/hubfs/11.jpg?width=461&amp;height=675&amp;name=11.jpg 461w, https://hs.mindspace.me/hs-fs/hubfs/11.jpg?width=614&amp;height=900&amp;name=11.jpg 614w, https://hs.mindspace.me/hs-fs/hubfs/11.jpg?width=768&amp;height=1125&amp;name=11.jpg 768w, https://hs.mindspace.me/hs-fs/hubfs/11.jpg?width=921&amp;height=1350&amp;name=11.jpg 921w" sizes="(max-width: 307px) 100vw, 307px">
-
-        <div class="text">
-          <h4>Stadtmitte</h4>
-          <p>Krausenstraße 9-10, 10117 Berlin</p>
-        </div>
-      </div></div><div class="owl-item" style="width: 330px; margin-right: 10px;"><div class="item">
-
-
-
-
-
-
-        <img src="https://hs.mindspace.me/hs-fs/hubfs/12.jpg?width=307&amp;height=450&amp;name=12.jpg" alt="12" loading="lazy" width="307" height="450" style="max-width: 100%; height: auto;" srcset="https://hs.mindspace.me/hs-fs/hubfs/12.jpg?width=154&amp;height=225&amp;name=12.jpg 154w, https://hs.mindspace.me/hs-fs/hubfs/12.jpg?width=307&amp;height=450&amp;name=12.jpg 307w, https://hs.mindspace.me/hs-fs/hubfs/12.jpg?width=461&amp;height=675&amp;name=12.jpg 461w, https://hs.mindspace.me/hs-fs/hubfs/12.jpg?width=614&amp;height=900&amp;name=12.jpg 614w, https://hs.mindspace.me/hs-fs/hubfs/12.jpg?width=768&amp;height=1125&amp;name=12.jpg 768w, https://hs.mindspace.me/hs-fs/hubfs/12.jpg?width=921&amp;height=1350&amp;name=12.jpg 921w" sizes="(max-width: 307px) 100vw, 307px">
-
-        <div class="text">
-          <h4>Friedrichstrasse</h4>
-          <p>Friedrichstrasse 68, 10117 Berlin</p>
-        </div>
-      </div></div><div class="owl-item cloned" style="width: 330px; margin-right: 10px;"><div class="item">
-
-
-
-
-
-
-        <img src="https://hs.mindspace.me/hs-fs/hubfs/01-4.jpg?width=307&amp;height=450&amp;name=01-4.jpg" alt="01-4" loading="lazy" width="307" height="450" style="max-width: 100%; height: auto;" srcset="https://hs.mindspace.me/hs-fs/hubfs/01-4.jpg?width=154&amp;height=225&amp;name=01-4.jpg 154w, https://hs.mindspace.me/hs-fs/hubfs/01-4.jpg?width=307&amp;height=450&amp;name=01-4.jpg 307w, https://hs.mindspace.me/hs-fs/hubfs/01-4.jpg?width=461&amp;height=675&amp;name=01-4.jpg 461w, https://hs.mindspace.me/hs-fs/hubfs/01-4.jpg?width=614&amp;height=900&amp;name=01-4.jpg 614w, https://hs.mindspace.me/hs-fs/hubfs/01-4.jpg?width=768&amp;height=1125&amp;name=01-4.jpg 768w, https://hs.mindspace.me/hs-fs/hubfs/01-4.jpg?width=921&amp;height=1350&amp;name=01-4.jpg 921w" sizes="(max-width: 307px) 100vw, 307px">
-
-        <div class="text">
-          <h4>Checkpoint Charlie</h4>
-          <p>Zimmerstraße 78, 10117 Berlin</p>
-        </div>
-      </div></div><div class="owl-item cloned" style="width: 330px; margin-right: 10px;"><div class="item">
-
-
-
-
-
-
-        <img src="https://hs.mindspace.me/hs-fs/hubfs/02-4.jpg?width=307&amp;height=450&amp;name=02-4.jpg" alt="02-4" loading="lazy" width="307" height="450" style="max-width: 100%; height: auto;" srcset="https://hs.mindspace.me/hs-fs/hubfs/02-4.jpg?width=154&amp;height=225&amp;name=02-4.jpg 154w, https://hs.mindspace.me/hs-fs/hubfs/02-4.jpg?width=307&amp;height=450&amp;name=02-4.jpg 307w, https://hs.mindspace.me/hs-fs/hubfs/02-4.jpg?width=461&amp;height=675&amp;name=02-4.jpg 461w, https://hs.mindspace.me/hs-fs/hubfs/02-4.jpg?width=614&amp;height=900&amp;name=02-4.jpg 614w, https://hs.mindspace.me/hs-fs/hubfs/02-4.jpg?width=768&amp;height=1125&amp;name=02-4.jpg 768w, https://hs.mindspace.me/hs-fs/hubfs/02-4.jpg?width=921&amp;height=1350&amp;name=02-4.jpg 921w" sizes="(max-width: 307px) 100vw, 307px">
-
-        <div class="text">
-          <h4>Kreuzberg</h4>
-          <p>Skalitzer Str. 104, 10997 Berlin</p>
-        </div>
-      </div></div><div class="owl-item cloned" style="width: 330px; margin-right: 10px;"><div class="item">
-
-
-
-
-
-
-        <img src="https://hs.mindspace.me/hs-fs/hubfs/03-3.jpg?width=307&amp;height=450&amp;name=03-3.jpg" alt="03-3" loading="lazy" width="307" height="450" style="max-width: 100%; height: auto;" srcset="https://hs.mindspace.me/hs-fs/hubfs/03-3.jpg?width=154&amp;height=225&amp;name=03-3.jpg 154w, https://hs.mindspace.me/hs-fs/hubfs/03-3.jpg?width=307&amp;height=450&amp;name=03-3.jpg 307w, https://hs.mindspace.me/hs-fs/hubfs/03-3.jpg?width=461&amp;height=675&amp;name=03-3.jpg 461w, https://hs.mindspace.me/hs-fs/hubfs/03-3.jpg?width=614&amp;height=900&amp;name=03-3.jpg 614w, https://hs.mindspace.me/hs-fs/hubfs/03-3.jpg?width=768&amp;height=1125&amp;name=03-3.jpg 768w, https://hs.mindspace.me/hs-fs/hubfs/03-3.jpg?width=921&amp;height=1350&amp;name=03-3.jpg 921w" sizes="(max-width: 307px) 100vw, 307px">
-
-        <div class="text">
-          <h4>Kudamm</h4>
-          <p>Uhlandstraße 32, 10719 Berlin</p>
-        </div>
-      </div></div><div class="owl-item cloned" style="width: 330px; margin-right: 10px;"><div class="item">
-
-
-
-        <img src="https://hs.mindspace.me/hs-fs/hubfs/04-2.jpg?width=307&amp;height=450&amp;name=04-2.jpg" alt="04-2" loading="lazy" width="307" height="450" style="max-width: 100%; height: auto;" srcset="https://hs.mindspace.me/hs-fs/hubfs/04-2.jpg?width=154&amp;height=225&amp;name=04-2.jpg 154w, https://hs.mindspace.me/hs-fs/hubfs/04-2.jpg?width=307&amp;height=450&amp;name=04-2.jpg 307w, https://hs.mindspace.me/hs-fs/hubfs/04-2.jpg?width=461&amp;height=675&amp;name=04-2.jpg 461w, https://hs.mindspace.me/hs-fs/hubfs/04-2.jpg?width=614&amp;height=900&amp;name=04-2.jpg 614w, https://hs.mindspace.me/hs-fs/hubfs/04-2.jpg?width=768&amp;height=1125&amp;name=04-2.jpg 768w, https://hs.mindspace.me/hs-fs/hubfs/04-2.jpg?width=921&amp;height=1350&amp;name=04-2.jpg 921w" sizes="(max-width: 307px) 100vw, 307px">
-
-        <div class="text">
-          <h4>Hackescher Markt</h4>
-          <p>Münzstraße 12, 10178 Berlin</p>
-        </div>
-      </div></div><div class="owl-item cloned" style="width: 330px; margin-right: 10px;"><div class="item"></div></div>
-
- </div>
+  <div class="slide-container" v-for="slide in slides" :key="slide.id">
+    <span id="slider1"></span>
+    <span id="slider2"></span>
+    <span id="slider3"></span>
+    <span id="slider4"></span>
+    <span id="slider5"></span>
+    <div class="image-container">
+      <img :src="slide.photo_link" :class="slide.slider_class" alt="slider image" >
+    </div>
+  </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 @use '../views/views';
 
 @media only screen and (max-width: 600px) {
-  .article-pic {
-    width: 90vw;
-    height: 20vh;
-    border-radius: 20px;
-    margin-top: 3vh;
-  }
+
 }
 
 @media only screen and (min-width: 600px) {
-  .article-pic {
-    height: 10vh;
-    border-radius: 20px;
-    margin-top: 3vh;
-  }
+
 
 }
 
 @media only screen and (min-width: 1000px) {
-  .article-pic {
-    width: 95vw;
-    height: 20vh;
-    border-radius: 20px;
-    margin-top: 1vh;
+  .slide-container {
+    margin: 50vh auto 0 auto;
+    transform: translateY(-50%);
+    width: 600px;
+    height: 450px;
+    overflow: hidden;
+  }
+  img {
+    width: 20%;
+  }
+
+  .image-container {
+    display: inline-block;
+    width: 3000px;
+    height: 400px;
+    position: relative;
+    transition: left 1s;
+
+
+    animation: slide 15s infinite;
+  }
+  .slider-image {
+    float: left;
+  }
+
+  .button-container {
+    position: relative;
+    top: 10px;
+  }
+
+  .slider-button {
+    height: 10px;
+    width: 10px;
+    margin: 4px;
+    display: inline-block;
+    border-radius: 5px;
+    background-color: rgba(white, 0.5);
+  }
+  .slider-button:hover {
+    background-color: rgba(white, 0.7);
+  }
+
+  #slider1:target ~ .image-container {
+    left: 0px;
+  }
+  #slider2:target ~ .image-container {
+    left: -600px;
+  }
+  #slider3:target ~ .image-container {
+    left: -1200px;
+  }
+  #slider4:target ~ .image-container {
+    left: -1800px;
+  }
+  #slider5:target ~ .image-container {
+    left: -2400px;
+  }
+
+  .image-container:hover {
+  }
+
+  @keyframes slide {
+    0% {
+      left: 0;
+    }
+    20% {
+      left: -600px;
+    }
+    40% {
+      left: -1200px;
+    }
+    60% {
+      left: -1800px;
+    }
+    80% {
+      left: -2400px;
+    }
+    100% {
+      left: 0;
+    }
   }
 }
+
 </style>

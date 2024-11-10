@@ -3,19 +3,17 @@ import HeaderComponent from "../components/HeaderComponent.vue";
 import IssueComponent from "@/components/IssueComponent.vue";
 import {ref} from "vue";
 const issue = ref(0)
+const issues = 4
 const click = ref("click to open")
 
-const routing = (ev: Event) => {window.location.href = `/issue/${ev.currentTarget.id}`}
+const routing = (ev: Event) => {window.location.href = `/issue/${ev.currentTarget?.id}`}
 </script>
 
 <template>
   <HeaderComponent class="header"/>
-  <div class="wrapper">
-    <IssueComponent :name="issue + 1" :click = "click" class="issue odd"
-                    id="1" @click = "routing"/>
-    <IssueComponent :name="issue + 2" :click = "click" class="issue disabled" id="2" @click = "routing" />
-    <IssueComponent :name="issue + 3" :click = "click" class="issue odd disabled" id="3" @click = "routing"/>
-    <IssueComponent :name="issue + 4" :click = "click" class="issue disabled" id="4" @click = "routing"/>
+  <div class="wrapper"  v-for="issue in issues" :key="issue">
+    <IssueComponent :name="issue.name" :click = "click" class="issue odd"
+                    :id="issue.id" @click = "routing"/>
   </div>
 </template>
 

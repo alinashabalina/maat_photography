@@ -52,7 +52,7 @@ const router = createRouter({
             component: IssueView,
         },
         {
-            path: '/issue/:id/article',
+            path: '/issue/:id/article/:number',
             name: "article",
             component: IssueMainArticleView,
         },

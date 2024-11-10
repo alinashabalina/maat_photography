@@ -1,15 +1,26 @@
 import { defineStore } from 'pinia'
-export const AboutStore = defineStore('gallery', {
-    state: () => ({
-    }),
-    getters: {
+import { mande } from 'mande'
 
-    },
+const abouts = mande("http://127.0.0.1:5000/issues")
+export const AboutStore:any  = defineStore('issues', {
+    state: () => ({
+        issues: [] as Issues[],
+    }),
     actions: {
-        getallAbouts() {
-            return fetch('http://127.0.0.1:5000/about')
-                .then((response) => response.json())
-                .then((data) => this.abouts.push(data["message"]))
+        async getallIssues() {
+            try {
+                await abouts.get()
+                    .then((data: any) => {this.abouts.push(data["message"]);return this.abouts})}
+            catch (error) {
+                return error
+            }
         },
     },
 })
+
+interface Issues {
+    id: number,
+    name: String,
+    social: String,
+    photo_link: String,
+}
