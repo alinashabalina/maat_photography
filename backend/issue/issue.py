@@ -2,11 +2,12 @@ from backend.init_db import DataBase
 
 
 class Issue:
-    def __init__(self, issue_id, name, pictures, texts):
+    def __init__(self, issue_id, name, articles, pictures, editorial):
         self.id = issue_id
         self.name = name
+        self.articles = articles
         self.pictures = pictures
-        self.texts = texts
+        self.editorial = editorial
 
 
 class IssueDB(DataBase):
@@ -23,19 +24,20 @@ class IssueDB(DataBase):
     varchar
 (
     256
-), pictures integer array, 
-texts integer array);
+), articles integer array, 
+pictures integer array,
+editorial varchar);
 ''')
         self.conn.commit()
 
-    def add_new_issue(self, name, pictures, texts):
-        self.cur.execute('INSERT INTO issues (name, pictures, texts)'
-                         'VALUES (%s, %s, %s)',
-                         (name, pictures, texts))
+    def add_new_issue(self, name, articles, pictures, editorial):
+        self.cur.execute('INSERT INTO issues (name, articles, pictures, editorial)'
+                         'VALUES (%s, %s, %s, %s)',
+                         (name, articles, pictures, editorial))
         self.conn.commit()
         self.cur.execute(f"SELECT * FROM issues WHERE issues.name = '{name}'")
         data = self.cur.fetchone()
-        issue = Issue(data[0], data[1], data[2], data[3])
+        issue = Issue(data[0], data[1], data[2], data[3], data[4])
         return issue
 
     def select_issue_count(self):
@@ -47,14 +49,12 @@ texts integer array);
     def select_all_issues(self):
         self.cur.execute("SELECT * FROM issues")
         data_many = self.cur.fetchall()
-        print(data_many)
         if len(data_many) > 0:
             returned = []
             for el in data_many:
-                data = Issue(el[0], el[1], el[2], el[3])
+                data = Issue(el[0], el[1], el[2], el[3], el[4])
                 returned.append(data)
         else:
             returned = 0
-        print(returned)
         return returned
 

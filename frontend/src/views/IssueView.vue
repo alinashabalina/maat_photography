@@ -1,16 +1,32 @@
 <script lang="ts" setup>
 import HeaderComponent from "@/components/HeaderComponent.vue";
 import MinorPhotoComponent from "@/components/MinorPhotoComponent.vue";
+import {useRoute} from "vue-router";
+import {ref} from "vue";
+const issues = JSON.parse(localStorage.getItem("issues") || '{}')
+const route = useRoute()
+const article = ref(0)
+interface Issue {
+  id: number,
+  name: String,
+  articles: number[],
+  editorial: String,
+  pictures: number[]
+}
+const issue = issues.find((el: Issue) => el.id.toString() === route.params.id)
+console.log(issue)
 </script>
 
 <template>
   <HeaderComponent/>
-  <div class="wrapper" v-for="article in articles" :key="item.id">
+  <div class="wrapper">
     <div class="wrapper-light">
       <div class="header"><img src="@/assets/ISSUE 1.png"></div>
     </div>
-      <router-link :to="`/issue/${$route.params.id}/article/${article.id}`"><MinorPhotoComponent class="small-pic"/></router-link>
-  </div>
+    <div v-for="article in issue.articles" :key="article">
+      <router-link :to="`/issue/${$route.params.id}/article/${article}`"> {{ article }}</router-link>
+    </div>
+ </div>
 
 </template>
 

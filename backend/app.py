@@ -222,7 +222,8 @@ def select_all_issues():
     try:
         count = IssueDB().select_issue_count()
         issues = IssueDB().select_all_issues()
-        response = {"message": "Ok", "count": count[0], "issues": issues}
+        issues_data = [{"id": i.id, "name": i.name, "articles": i.articles, "pictures": i.pictures, "editorial": i.editorial} for i in issues]
+        response = {"message": "Ok", "count": count[0], "issues": issues_data}
         return jsonify(response), 200
     except Exception as e:
         response = {"message": e.args}
@@ -276,9 +277,10 @@ def text_create():
 def issue_create():
     try:
         name = json.loads(request.data)['name']
-        texts = json.loads(request.data)['texts']
+        articles = json.loads(request.data)['articles']
         pictures = json.loads(request.data)['pictures']
-        IssueDB().add_new_issue(name, pictures, texts)
+        editorial = json.loads(request.data)['editorial']
+        IssueDB().add_new_issue(name, articles, pictures, editorial)
         response = {}
         return jsonify(response), 204
     except Exception as e:
